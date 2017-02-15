@@ -55,6 +55,28 @@
           <strong style="display:inline-block; vertical-align: center;">{{person.fullName}}</strong>
         {{/power-select-multiple}}
       {{/form.element}}
+      {{#form.element label="Picks" property="picks" as |el|}}
+        {{#power-select-multiple
+          options=picks
+          searchField="name"
+          selected=model.picks
+          onchange=(action (mut model.picks))
+          as |pick|
+        }}
+          <strong style="display:inline-block; vertical-align: center;">{{pick.name}}</strong>
+        {{/power-select-multiple}}
+      {{/form.element}}
+      {{#form.element label="Topics" property="topics" as |el|}}
+        {{#power-select-multiple
+          options=topics
+          searchField="name"
+          selected=model.topics
+          onchange=(action (mut model.topics))
+          as |topic|
+        }}
+          <strong style="display:inline-block; vertical-align: center;">{{topic.name}}</strong>
+        {{/power-select-multiple}}
+      {{/form.element}}
       {{#form.element label="Air Date" property="airDate" as |el|}}
         {{pikaday-input
           value=model.airDate
