@@ -22,7 +22,10 @@ export default Ember.Route.extend({
 
   actions: {
     saveTopic(topic) {
-      topic.set('updatedAt', new Date());
+      topic.setProperties({
+        updatedAt: new Date(),
+        slug: topic.get('name').dasherize(),
+      });
       topic.save().then(() => {
         this.transitionTo('topic.index', topic.get('slug'));
       });

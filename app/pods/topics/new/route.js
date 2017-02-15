@@ -14,6 +14,7 @@ export default Ember.Route.extend({
 
   actions: {
     saveTopic(topic) {
+      topic.set('slug', topic.get('name').dasherize());
       topic.save().then(() => {
         this.transitionTo('topics.index');
       });
