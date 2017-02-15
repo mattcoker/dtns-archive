@@ -1,0 +1,240 @@
+<form class="form-inline">
+  {{link-to 'Back to Episodes' 'episodes.index' tagName='button' classNames='btn btn-success'}}
+
+  {{#if session.isAuthenticated}}
+    {{link-to (concat 'Edit Episode #' model.episodeNumber) 'episode.edit' model.id tagName='button' classNames='btn btn-success'}}
+  {{/if}}
+</form>
+
+<div class="row">
+  <h2 class="col-xs-12 text-align-sm">#{{model.displayName}}</h2>
+  <div class="col-xs-12 col-sm-6 col-sm-push-6" style="margin-bottom: 15px">
+    <!-- 16:9 aspect ratio -->
+    {{#if model.youtubeId}}
+      <div class="embed-responsive embed-responsive-16by9">
+        {{ember-youtube ytid=model.youtubeId playerVars=playerVars classNames='embed-responsive-item'}}
+      </div>
+    {{else}}
+      <img width="100%" src="/assets/images/no-episode-available.jpg" />
+    {{/if}}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-sm-pull-6">
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="field-name">Air Date</div>
+        <div class="value">{{moment-format model.airDate dateFormat}}</div>
+      </li>
+
+      <li class="list-group-item">
+        <div class="field-name">Show Notes</div>
+        <div class="value {{unless model.showNotesURL 'text-muted'}}">{{showNotesLink}}</div>
+      </li>
+
+      <li class="list-group-item">
+        <div class="field-name">Download Link</div>
+        <div class="value {{unless model.downloadURL 'text-muted'}}">{{downloadLink}}</div>
+      </li>
+
+
+      <li class="list-group-item">
+        <div class="field-name">Hosts</div>
+        <div class="value">
+          {{#each model.hosts as |person|}}
+            {{link-to person.fullName 'person.index' person.id classNames='label label-default'}}
+          {{else}}
+            <span class="text-muted">none</span>
+          {{/each}}
+        </div>
+      </li>
+
+      <li class="list-group-item">
+        <div class="field-name">Contributors</div>
+        <div class="value">
+          {{#each model.contributors as |person|}}
+            {{link-to person.fullName 'person.index' person.id classNames='label label-default'}}
+          {{else}}
+            <span class="text-muted">none</span>
+          {{/each}}
+        </div>
+      </li>
+
+      <li class="list-group-item">
+        <div class="field-name">Guests</div>
+        <div class="value">
+          {{#each model.guests as |person|}}
+            {{link-to person.fullName 'person.index' person.id classNames='label label-default'}}
+          {{else}}
+            <span class="text-muted">none</span>
+          {{/each}}
+        </div>
+      </li>
+
+      <li class="list-group-item">
+        <div class="field-name">Topics</div>
+        <div class="value">
+          {{#each model.topics as |topic|}}
+            {{topic-label model=topic}}
+          {{else}}
+            <span class="text-muted">none</span>
+          {{/each}}
+        </div>
+      </li>
+
+      <li class="list-group-item">
+        <div class="field-name">Picks</div>
+        <div class="value">
+          {{#each model.picks as |pick|}}
+            {{link-to pick.name 'pick.index' pick.id tagName='a' classNames='label label-default'}}
+          {{else}}
+            <span class="text-muted">none</span>
+          {{/each}}
+        </div>
+      </li>
+
+      <li class="list-group-item">
+        <div class="field-name">Created At</div>
+        <div class="value">
+          {{moment-format model.createdAt dateTimeFormat}}
+        </div>
+      </li>
+
+      <li class="list-group-item">
+        <div class="field-name">Updated At</div>
+        <div class="value">
+          {{moment-format model.updatedAt dateTimeFormat}}
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+{{!-- <div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column">
+      {{link-to 'Back to Episodes' 'episodes.index' tagName='button' classNames='ui button'}}
+
+      {{#if session.isAuthenticated}}
+        {{#link-to 'episode.edit' model.id tagName='button' classNames='ui button'}}
+          Edit Episode #{{model.episodeNumber}}
+        {{/link-to}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="ui form">
+    <div class="row">
+      <h1>{{model.displayName}}</h1>
+    </div>
+
+    <div class="ui stackable mobile reversed equal width grid">
+      <div class="column">
+
+        <table class="ui very basic unstackable table">
+          <tbody>
+
+            <tr>
+              <td class="single line"><div class="ui basic horizontal label">Air Date</div></td>
+              <td>{{moment-format model.airDate dateFormat}}</td>
+            </tr>
+
+            <tr>
+              <td><div class="ui basic horizontal label">Description</div></td>
+              <td>{{{model.description}}}</td>
+            </tr>
+
+            <tr>
+              <td class='single line'><div class="ui basic horizontal label">Show Notes</div></td>
+              <td class="{{unless hasShowNotesURL 'disabled'}}">{{showNotesLink}}</td>
+            </tr>
+
+            <tr>
+              <td class='single line'><div class="ui basic horizontal label">Download Link</div></td>
+              <td class="{{unless hasDownloadURL 'disabled'}}">{{downloadLink}}</td>
+            </tr>
+
+            <tr>
+              <td class='single line'><div class="ui basic horizontal label">Hosts</div></td>
+              <td class="{{unless model.hosts.length 'disabled'}}">
+                {{#each model.hosts as |person|}}
+                  {{#link-to 'person.index' person.id classNames='ui image label'}}
+                    <img class='ui avatar image' src='{{person.photo}}' />
+                    {{person.fullName}}
+                  {{/link-to}}
+                {{else}}
+                  none
+                {{/each}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class='single line'><div class="ui basic horizontal label">Contributors</div></td>
+              <td class="{{unless model.contributors.length 'disabled'}}">
+                {{#each model.contributors as |person|}}
+                  {{#link-to 'person.index' person.id classNames='ui image label'}}
+                    <img class='ui avatar image' src='{{person.photo}}' />
+                    {{person.fullName}}
+                  {{/link-to}}
+                {{else}}
+                  none
+                {{/each}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class='single line'><div class="ui basic horizontal label">Guests</div></td>
+              <td class="{{unless model.guests.length 'disabled'}}">
+                {{#each model.guests as |person|}}
+                  {{#link-to 'person.index' person.id classNames='ui image label'}}
+                    <img class='ui avatar image' src='{{person.photo}}' />
+                    {{person.fullName}}
+                  {{/link-to}}
+                {{else}}
+                  none
+                {{/each}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class='single line'><div class="ui basic horizontal label">Topics</div></td>
+              <td class="{{unless model.topics.length 'disabled'}}">
+                {{#each model.topics as |topic|}}
+                  {{topic-label model=topic}}
+                {{else}}
+                  none
+                {{/each}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class='single line'><div class="ui basic horizontal label">Picks</div></td>
+              <td class="{{unless model.picks.length 'disabled'}}">
+                {{#each model.picks as |pick|}}
+                  {{pick-label model=pick}}
+                {{else}}
+                  none
+                {{/each}}
+              </td>
+            </tr>
+
+            <tr>
+              <td class="single line disabled"><div class="ui basic horizontal label">Date Created</div></td>
+              <td class="disabled">{{moment-format model.createdAt dateTimeFormat}}</td>
+            </tr>
+
+            <tr>
+              <td class="single line disabled"><div class="ui basic horizontal label">Last Updated</div></td>
+              <td class="disabled">{{moment-format model.updatedAt dateTimeFormat}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      {{#if model.youtubeId}}
+        <div class="column">
+          {{ember-youtube ytid=model.youtubeId classNames='embed-container' width=null height=null}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div> --}}

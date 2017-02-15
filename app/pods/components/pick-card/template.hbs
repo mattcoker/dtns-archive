@@ -1,0 +1,10 @@
+{{!-- We might re-enable this in the future if we can figure out how to dynamically link to fingerprinted content --}}
+{{!-- <img class="pick-bg" src="{{iconPath}}" /> --}}
+{{#link-to 'pick.index' model.id tagName='div' classNames='card-block'}}
+  <h4 class="card-title">
+    {{model.name}}
+  </h4>
+  <div class="card-text mb-2">
+    {{{truncate model.description 100}}}
+  </div>
+{{/link-to}}

@@ -1,0 +1,37 @@
+{{#if session.isAuthenticated}}
+  {{link-to 'Edit' 'person.edit' person.id classNames='text-center edit-link'}}
+{{/if}}
+
+{{#link-to 'person' person tagName='div' classNames='card-img-top'}}
+  {{lazy-image
+    url=(if person.photo person.photo '/assets/images/default-image.png')
+    alt=(concat 'Photo for ' person.fullName)
+  }}
+{{/link-to}}
+
+{{#link-to 'person.index' person tagName='div' classNames='card-block'}}
+  <h4 class="card-title">
+    {{person.fullName}}
+  </h4>
+
+  <h6 class="card-subtitle text-muted">
+    {{person.title}}
+  </h6>
+
+  <div class="card-text mb-2">
+    {{{truncate person.description 140}}}
+  </div>
+{{/link-to}}
+
+<div class="card-footer">
+  {{#social-link type='twitter' identifier=person.twitterHandle}}
+    <i class="fa fa-twitter" aria-hidden="true"></i>
+    @{{#highlight-filter
+      fieldName='twitterHandle'
+      filterTerm=filterTerm
+      filterField=filterField
+    }}
+      {{person.twitterHandle}}
+    {{/highlight-filter}}
+  {{/social-link}}
+</div>

@@ -1,0 +1,26 @@
+<form class="form-inline">
+  {{link-to 'Back to Topics' 'topics.index' tagName='button' classNames='btn btn-success'}}
+
+  {{#if (and session.isAuthenticated model)}}
+    {{#link-to 'topic.edit' model.slug tagName='button' tagName='button' classNames='btn btn-success'}}
+      Edit "{{model.name}}" Topic
+    {{/link-to}}
+  {{/if}}
+</form>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h1 style="margin-top: 0;">{{model.name}}</h1>
+        <p>{{model.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{episodes-display
+  myPlayerVars=myPlayerVars
+  settings=settings
+  episodes=model.episodes
+}}

@@ -1,0 +1,22 @@
+<form class="form-inline">
+  {{link-to 'Back to Topics' 'topics.index' tagName='button' classNames='btn btn-success'}}
+</form>
+
+<div class="row">
+  {{#bs-form formLayout='horizontal' model=model classNames='col-xs-12 col-sm-8 col-md-6' as |form|}}
+      {{form.element controlType="text" label="Name" property="name"}}
+      {{#form.element label="Color" property="backgroundColor" as |el|}}
+          {{custom-color-picker color=model.backgroundColor}}
+      {{/form.element}}
+      {{form.element controlType="textarea" label="Description" property="description" rows=5}}
+      <div class="text-center">
+        <button class="btn btn-primary" type="submit" {{action 'saveTopic' model}}>Save</button>
+        <button class="btn btn-danger" type="submit" {{action 'cancelTopic' model}}>Cancel</button>
+      </div>
+  {{/bs-form}}
+
+  <div class="col-xs-12 col-sm-4 col-md-6">
+    <h3 style="margin-top: 0;">Preview</h3>
+    {{topic-label model=model isPreview=true}}
+  </div>
+</div>

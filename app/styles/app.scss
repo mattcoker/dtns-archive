@@ -1,0 +1,374 @@
+$screen-xs: 480px;
+$screen-sm: 540px;
+$screen-md: 768px;
+$screen-lg: 1024px;
+
+$brand-primary: darken(#5cb85c, 6.5%);
+
+@import "ember-bootstrap/bootstrap";
+@import "ember-bootstrap/bootstrap/variables";
+
+@import 'ember-power-select/themes/bootstrap';
+@import "ember-power-select";
+@import "_partials/_card";
+
+.pika-single {
+  z-index: 1;
+  td:last-child {
+    padding: 0;
+  }
+}
+
+li.ember-power-select-multiple-option {
+  padding: 0 8px 0 5px;
+}
+
+input.ember-power-select-trigger-multiple-input {
+  height: 33px !important;
+  margin: 2px 0;
+}
+
+.editable-photo {
+  width: 100%;
+}
+.social-link a {
+  color: #337ab7 !important;
+}
+
+.badge.preview {
+  font-size: 30px;
+  border-radius: 50px;
+  padding: 3px 15px;
+}
+
+.navbar {
+  border-bottom: 0px;
+}
+.navbar-inverse .navbar-brand {
+  color: white !important;
+}
+a.active {
+  background-color: $brand-primary !important;
+}
+.hoverable {
+  cursor: pointer;
+}
+
+
+/* Different positions */
+.corner-ribbon {
+  width: 70px;
+  background: #ec0;
+  position: absolute;
+  text-align: center;
+  line-height: 35px;
+  letter-spacing: 1px;
+  color: #000;
+  top: -5px;
+  right: -22px;
+  left: auto;
+  z-index: 1;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  .glyphicon {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+}
+
+
+.episode-label {
+  display: inline-block;
+}
+
+.container {
+  @include container-fixed;
+
+  @media (min-width: $screen-sm-min) {
+    max-width: $container-sm;
+    width: 100%;
+  }
+  @media (min-width: $screen-md-min) {
+    max-width: $container-md;
+    width: 100%;
+  }
+  @media (min-width: $screen-lg-min) {
+    max-width: $container-lg;
+    width: 100%;
+  }
+}
+
+.label { font-size: 85%; }
+.text-align-sm {
+  text-align: center;
+  @media (min-width: 540px) {
+    text-align: initial;
+  }
+}
+
+nav > .container {
+  @media (min-width: 540px) and (max-width: 1170px) {
+    width: 100% !important;
+  }
+}
+
+.home-page {
+  .list-group-item {
+    &:first-child {
+      @extend .bg-primary;
+      background-color: $brand-primary;
+      text-align: center;
+    }
+  }
+
+  .field-name {
+    width: 40%;
+    font-weight: bold;
+    font-style: italic;
+    text-align: right;
+    padding-right: 15px;
+  }
+
+  .value {
+    width: 60%;
+    text-align: left;
+    padding-left: 15px;
+    border-left: 1px solid #ddd
+  }
+}
+
+.list-group-item {
+  padding: 0;
+  .list-group-heading,
+  .list-group-footer {
+    padding: 10px 15px;
+  }
+
+  &:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+
+  .field-name, .value {
+    float: left;
+    padding: 10px 15px;
+  }
+
+  .field-name {
+    width: 40%;
+    font-weight: bold;
+    font-style: italic;
+    text-align: right;
+    padding-right: 15px;
+  }
+
+  .value {
+    width: 60%;
+    text-align: left;
+    padding-left: 15px;
+    border-left: 1px solid #ddd
+  }
+}
+
+.edit-link {
+  display: block;
+  position: absolute;
+  z-index: 999;
+  background: lightgrey;
+  color: black !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  font-size: 16px;
+  width: 100%;
+  padding: 5px 0;
+  top: -32px;
+  transition: .25s ease top;
+
+  .card:hover & {
+    top: 0;
+  }
+}
+
+#main-content {
+  margin-top: 51px;
+}
+
+// Custom highlight styles
+.highlight-terms {
+  display: inline;
+}
+
+.social-link span {
+  display: inline-block;
+}
+
+span.highlight {
+  background: rgba(33, 186, 69, 0.15) !important;
+  border-bottom: 2px solid #21BA45;
+  padding: 2px 1px 1px !important;
+}
+
+// Custom search form styles
+.form-inline {
+  margin: 15px 0;
+}
+
+// Custom card styles
+.card-deck {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  align-items: stretch;
+  // margin-left: -.75em;
+  // margin-right: -.75em;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.card {
+  overflow: hidden;
+  // margin: 0 .75em 15px;
+  margin: 0 15px 15px;
+  // width: calc(100% - 1.5em);
+  width: calc(100% - 30px);
+
+  @media only screen and (min-width : 480px) {
+    // width: calc(50% - 1.5em);
+    width: calc(50% - 30px);
+  }
+
+  @media only screen and (min-width : 768px) {
+    // width: calc(33.3% - 1.5em);
+    width: calc(33.3% - 30px);
+  }
+
+  @media only screen and (min-width : 1200px) {
+    // width: calc(25% - 1.5em);
+    width: calc(25% - 30px);
+  }
+}
+
+.lazy-image-container {
+  min-height: auto;
+}
+
+.has-footer .card-block {
+  margin-bottom: 40px;
+}
+
+.card-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.card-subtitle {
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+// Youtube styles
+.EmberYoutube {
+  line-height: 0;
+}
+
+// Toggle styles
+.x-toggle-component {
+  justify-content: flex-start;
+  .toggle-text {
+    margin-bottom: 0;
+  }
+}
+
+.x-toggle-container {
+  padding: 0;
+  margin: 0 5px;
+}
+
+.x-toggle-light.x-toggle-btn {
+  background-color: #9FD6AE;
+}
+
+.toggle-true {
+  .off-label {
+    color: lightgrey !important;
+  }
+  .on-label {
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+
+.toggle-false {
+  .on-label {
+    color: lightgrey !important;
+  }
+  .off-label {
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+
+// Settings styles
+table {
+  text-align: right;
+  tr {
+    line-height: 50px;
+  }
+  td:first-child {
+    width: 300px;
+  }
+  td:last-child{
+    padding-left: 5px;
+  }
+}
+
+
+// Generic styles
+.no-padding {
+  padding: 0 !important;
+}
+
+// Table styles
+.people-labels, .episode-labels {
+  .label {
+    font-size: 12px;
+    margin-right: 3px;
+  }
+}
+
+.topic-card {
+  border-width: 1px;
+  border-bottom-width: 2px;
+}
+
+tr > * {
+  vertical-align: middle !important;
+}
+
+.card img.lazy-image {
+  width: 100%;
+  height: auto;
+}
+
+// Pick Categories
+// Icons licensed by http://iconmonstr.com/
+[class*="pick-category"] {
+  .card-block {
+    height: 100%;
+    background-size: 70px;
+    background-color: transparent;
+    background-position: top right;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-image: url('/assets/images/icons/misc.png');
+  }
+}
+
+$categories-list: app apparel art book dtns education electronics entertainment event extension-plugin game hardware misc movie music news podcast service software tv-show website;
+@each $current-category in $categories-list {
+  .pick-category-#{$current-category} .card-block{
+    background-image: url('/assets/images/icons/#{$current-category}.png');
+  }
+}

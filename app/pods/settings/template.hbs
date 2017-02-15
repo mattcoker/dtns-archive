@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-8">
+    <div class="panel panel-default" style="margin-top: 15px;">
+      <div class="panel-body">
+        All settings on this page are <strong><i>automatically saved</i></strong>, and stored locally on this device.<br>These settings will persist when refreshing the page.
+      </div>
+    </div>
+  </div>
+</div>
+
+<table>
+  <tr class="{{if episodesShowGrid 'toggle-true' 'toggle-false'}}">
+    <td>Episodes will be shown as...</td>
+    {{x-toggle
+      showLabels=true
+      value=episodesShowGrid
+      onToggle=(mut episodesShowGrid)
+      offLabel='a List::false'
+      onLabel='Cards::true'
+      classNames='mt-2'
+      theme='light'
+      tagName='td'
+    }}
+  </tr>
+  <tr class="{{if peopleShowGrid 'toggle-true' 'toggle-false'}}">
+    <td>People will be shown as...</td>
+    {{x-toggle
+      showLabels=true
+      value=peopleShowGrid
+      onToggle=(mut peopleShowGrid)
+      offLabel='a List::false'
+      onLabel='Cards::true'
+      classNames='mt-2'
+      theme='light'
+      tagName='td'
+    }}
+  </tr>
+  <tr class="{{if picksShowGrid 'toggle-true' 'toggle-false'}}">
+    <td>Picks will be shown as...</td>
+    {{x-toggle
+      showLabels=true
+      value=picksShowGrid
+      onToggle=(mut picksShowGrid)
+      offLabel='a List::false'
+      onLabel='Cards::true'
+      classNames='mt-2'
+      theme='light'
+      tagName='td'
+    }}
+  </tr>
+  <tr class="{{if topicsShowGrid 'toggle-true' 'toggle-false'}}">
+    <td>Topics will be shown as...</td>
+    {{x-toggle
+      showLabels=true
+      value=topicsShowGrid
+      onToggle=(mut topicsShowGrid)
+      offLabel='a List::false'
+      onLabel='Cards::true'
+      classNames='mt-2'
+      theme='light'
+      tagName='td'
+    }}
+  </tr>
+  <tr>
+    <td>Dates will be displayed as <strong><i>{{moment-format currDate globalDateFormat}}</i></strong>.</td>
+    <td>
+      {{#x-select classNames='form-control' action='updateDateFormat' value=globalDateFormat as |xs|}}
+        {{#each dateFormats as |format|}}
+          {{#xs.option value=format}}{{format}}{{/xs.option}}
+        {{/each}}
+      {{/x-select}}
+    </td>
+  </tr>
+  <tr>
+    <td>Times will be displayed as <strong><i>{{moment-format currDate globalTimeFormat}}</i></strong>.</td>
+    <td>
+      {{#x-select classNames='form-control' action='updateTimeFormat' value=globalTimeFormat as |xs|}}
+        {{#each timeFormats as |format|}}
+          {{#xs.option value=format.value}}{{format.label}}{{/xs.option}}
+        {{/each}}
+      {{/x-select}}
+    </td>
+  </tr>
+</table>

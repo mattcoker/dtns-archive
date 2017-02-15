@@ -1,0 +1,15 @@
+<form class="form-inline">
+  {{#if session.isAuthenticated}}
+    {{link-to 'Add Pick' 'picks.new' class="btn btn-success"}}
+  {{/if}}
+</form>
+
+{{#if settings.picksShowGrid}}
+  <div class="card-deck" style="margin-top:10px;">
+    {{#each model as |pick|}}
+      {{pick-card model=pick}}
+    {{/each}}
+  </div>
+{{else}}
+  {{picks-table picks=model}}
+{{/if}}

@@ -1,0 +1,51 @@
+<form class="form-inline">
+  {{link-to 'Back to People' 'people.index' tagName='button' classNames='btn btn-success'}}
+</form>
+
+<div class="row">
+  {{#x-file-input
+    multiple=true
+    class='col-xs-12 col-sm-5 col-sm-push-7'
+    action=(action "didSelectFiles")
+    accept="image/png,image/jpg"
+  }}
+    <img class="editable-photo" src={{if model.photo model.photo '/assets/images/default-image.png'}} alt={{concat 'Photo for ' model.fullName}} />
+
+    {{#if isUploading}}
+      <div>Uploading...</div>
+      {{#bs-progress as |p|}}
+        {{p.bar
+          value=fileProgress
+          minValue=0
+          maxValue=100
+          showLabel=true
+          roundDigits=true
+          type='success'
+          striped=true
+          animate=true
+        }}
+      {{/bs-progress}}
+    {{else}}
+      <div style="background: #eeeeee; text-align: center; width: 100%; padding: 5px; border-radius: 0 0 5px 5px; border-width: 0 1px 1px 1px; border-style: solid; border-color: #ddd;">Click photo to edit</div>
+    {{/if}}
+  {{/x-file-input}}
+
+  {{#bs-form formLayout='horizontal' model=model classNames='col-xs-12 col-sm-7 col-sm-pull-5' as |form|}}
+      {{form.element controlType="text" label="First Name" property="firstName"}}
+      {{form.element controlType="text" label="Last Name" property="lastName"}}
+      {{form.element controlType="text" label="Title/Role" property="title"}}
+      {{#form.element label="Twitter Handle" property="twitterHandle" as |el|}}
+        <div class="input-group">
+          <span class="input-group-addon">@</span>
+          <input value={{el.value}} class="form-control" oninput={{action (mut el.value) value="target.value"}} onchange={{action (mut el.value) value="target.value"}} type="text">
+        </div>
+      {{/form.element}}
+      {{form.element controlType="textarea" label="Description" property="description" rows=5}}
+      {{form.element controlType="text" readonly=true label="Date Created" property="createdAt"}}
+      {{form.element controlType="text" readonly=true label="Date Updated" property="updatedAt"}}
+      <div class="text-center">
+        <button class="btn btn-primary" type="submit" {{action 'savePerson' model}}>Save</button>
+        <button class="btn btn-danger" type="submit" {{action 'cancelPerson' model}}>Cancel</button>
+      </div>
+  {{/bs-form}}
+</div>

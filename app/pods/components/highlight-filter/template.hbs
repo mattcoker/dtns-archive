@@ -1,0 +1,7 @@
+{{#if showMatches}}
+  {{#highlight-terms filterTerm}}
+    {{yield}}
+  {{/highlight-terms}}
+{{else}}
+  {{yield}}
+{{/if}}

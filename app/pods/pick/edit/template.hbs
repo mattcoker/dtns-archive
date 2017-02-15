@@ -1,0 +1,17 @@
+<form class="form-inline">
+  {{link-to 'Back to Picks' 'picks.index' tagName='button' classNames='btn btn-success'}}
+</form>
+
+<div class="row">
+  {{#bs-form formLayout='horizontal' model=model classNames='col-xs-12 col-sm-8 col-md-6' as |form|}}
+      {{form.element controlType="text" label="Name" property="name"}}
+      {{form.element controlType="text" label="Category" property="category"}}
+      {{form.element controlType="text" label="URL" property="url"}}
+      {{form.element controlType="textarea" label="Description" property="description" rows=5}}
+      {{form.element controlType="textarea" label="Show Notes Text" property="showNotesText" rows=5}}
+      <div class="text-center">
+        <button class="btn btn-primary" type="submit" {{action 'savePick' model}}>Save</button>
+        <button class="btn btn-danger" type="submit" {{action 'cancelPick' model}}>Cancel</button>
+      </div>
+  {{/bs-form}}
+</div>

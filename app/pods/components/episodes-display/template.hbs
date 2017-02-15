@@ -1,0 +1,13 @@
+{{#if settings.episodesShowGrid}}
+  <div class="card-deck">
+    {{#each episodes as |episode|}}
+      {{episode-card episode=episode}}
+    {{/each}}
+  </div>
+{{else}}
+  {{episodes-table
+    episodes=episodes
+    filterTerm=filterTerm
+    filterField=filterField
+  }}
+{{/if}}

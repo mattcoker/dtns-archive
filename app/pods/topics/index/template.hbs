@@ -1,0 +1,15 @@
+<form class="form-inline">
+  {{#if session.isAuthenticated}}
+    {{link-to 'Add Topic' 'topics.new' class="btn btn-success"}}
+  {{/if}}
+</form>
+
+{{#if settings.topicsShowGrid}}
+  <div class="card-deck" style="margin-top:10px;">
+    {{#each model as |topic|}}
+      {{topic-card model=topic}}
+    {{/each}}
+  </div>
+{{else}}
+  {{topics-table topics=model}}
+{{/if}}

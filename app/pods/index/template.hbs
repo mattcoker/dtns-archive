@@ -1,0 +1,114 @@
+<div class="home-page">
+  <div class="jumbotron" style="margin-top: 15px;">
+    <h2>Welcome to the Daily Tech News Show Archive</h2>
+    <p>Your Dedicated Repository for DTNS episodes, people, picks, and topics.</p>
+  </div>
+
+  <p class="h4">Here are some of our latest episodes:</p>
+  <div class="card-deck">
+    {{#each latestEpisodes as |episode|}}
+      {{episode-card episode=episode showReviewFlag=false}}
+    {{/each}}
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item h4 bg-primary">
+          <div class="list-group-heading">Archive Statistics</div>
+        </li>
+        {{#link-to 'episodes.index' tagName='a' classNames='list-group-item stat'}}
+          <div class="field-name" style="width: 60%; text-align: center;">Number of Episodes</div>
+          <div class="value" style="width: 40%; text-align: center;">{{format-number stats.episodesCount}}</div>
+        {{/link-to}}
+
+        {{#link-to 'people.index' tagName='a' classNames='list-group-item stat'}}
+          <div class="field-name" style="width: 60%; text-align: center;">Number of People</div>
+          <div class="value" style="width: 40%; text-align: center;">{{format-number stats.peopleCount}}</div>
+        {{/link-to}}
+
+        {{#link-to 'picks.index' tagName='a' classNames='list-group-item stat'}}
+          <div class="field-name" style="width: 60%; text-align: center;">Number of Picks</div>
+          <div class="value" style="width: 40%; text-align: center;">{{format-number stats.picksCount}}</div>
+        {{/link-to}}
+
+        {{#link-to 'topics.index' tagName='a' classNames='list-group-item stat'}}
+          <div class="field-name" style="width: 60%; text-align: center;">Number of Topics</div>
+          <div class="value" style="width: 40%; text-align: center;">{{format-number stats.topicsCount}}</div>
+        {{/link-to}}
+      </ul>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item h4 bg-primary">
+          <div class="list-group-heading">Patreon Statistics</div>
+        </li>
+        <a href="{{patreonURL}}" target="_blank" class="list-group-item stat">
+          <div class="field-name" style="width: 60%; text-align: center;">Number of Patrons</div>
+          <div class="value" style="width: 40%; text-align: center;">{{format-number stats.patronCount}}</div>
+        </a>
+
+        <a href="{{patreonURL}}" target="_blank" class="list-group-item stat">
+          <div class="field-name" style="width: 60%; text-align: center;">Amount Pledged Each Month</div>
+          <div class="value" style="width: 40%; text-align: center;">{{format-number stats.totalPledged style='currency' currency='USD' minimumFractionDigits=0}}</div>
+        </a>
+
+        <a href="{{patreonURL}}" target="_blank" class="list-group-item stat">
+          <div class="field-name" style="width: 60%; text-align: center;">Amount to Next Goal</div>
+          <div class="value" style="width: 40%; text-align: center;">{{format-number stats.amountToNextGoal style='currency' currency='USD' minimumFractionDigits=0}}</div>
+        </a>
+
+        <li class="list-group-item">
+          <div class="list-group-footer">
+            <a href="https://www.patreon.com/bePatron?u=39956" target="_blank" style="text-align: center; display: block">Support the show!</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+{{!-- <div class="col-sm-4">
+  <div class="progress">
+    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{format-number stats.percentageOfNextGoal}}" aria-valuemin="0" aria-valuemax="100" style="width: {{format-number stats.percentageOfNextGoal}}%">
+      {{format-number stats.percentageOfNextGoal}}% Complete (success)
+    </div>
+  </div>
+</div> --}}
+
+{{!-- <div class="ui four column grid">
+  <div class="ui statistics one column large left floated">
+    {{#link-to 'episodes.index'}}
+      {{format-number stats.episodesCount}} Episodes
+    {{/link-to}}
+    <br>
+    {{#link-to 'people.index'}}
+      {{format-number stats.peopleCount}} People
+    {{/link-to}}
+    <br>
+    {{#link-to 'topics.index'}}
+      {{format-number stats.topicsCount}} Topics
+    {{/link-to}}
+    <br>
+    {{#link-to 'picks.index'}}
+      {{format-number stats.picksCount}} Picks
+    {{/link-to}}
+  </div>
+
+  <div class="ui statistics one column large floated right" style="margin-top:10px;">
+    <a href="{{patreonURL}}" target="_blank">
+      {{format-number stats.patronCount}} Patrons
+    </a>
+    <br>
+    <a href="{{patreonURL}}" target="_blank">
+      {{format-number stats.totalPledged style='currency' currency='USD' minimumFractionDigits=0}} pledged each month
+    </a>
+    <br>
+    <a href="{{patreonURL}}" target="_blank">
+      {{format-number stats.amountToNextGoal style='currency' currency='USD' minimumFractionDigits=0}} to Next Goal
+    </a>
+  </div>
+</div>
+ --}}

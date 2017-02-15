@@ -1,0 +1,53 @@
+<form class="form-inline">
+  {{link-to 'Back to Picks' 'picks.index' tagName='button' classNames='btn btn-success'}}
+
+  {{#if (and session.isAuthenticated model)}}
+    {{#link-to 'pick.edit' model.id tagName='button' tagName='button' classNames='btn btn-success'}}
+      Edit "{{model.name}}" Pick
+    {{/link-to}}
+  {{/if}}
+</form>
+
+<div class="row">
+  <h1 class="col-xs-12">{{model.name}}</h1>
+  <div class="col-xs-12 col-sm-8">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="field-name">Category</div>
+        <div class="value">{{model.category}}</div>
+      </li>
+
+      <li class="list-group-item">
+        <div class="field-name">Description</div>
+        <div class="value">{{model.description}}</div>
+      </li>
+
+      <li class="list-group-item">
+        <div class="field-name">URL</div>
+        <div class="value">
+          {{#if model.url}}
+            <a href="{{model.url}}" target="_blank">{{model.url}}</a>
+          {{else}}
+            <span class="text-muted">none</span>
+          {{/if}}
+        </div>
+      </li>
+
+      <li class="list-group-item">
+        <div class="field-name">Show Notes Text</div>
+        <div class="value">{{if model.showNotesText (nl2br model.showNotesText) 'none'}}</div>
+      </li>
+
+      <li class="list-group-item">
+        <div class="field-name">Episode</div>
+        <div class="value">
+          {{#if model.episode}}
+            {{link-to (concat '#' model.episode.episodeNumber) 'episode.index' model.episode classNames='badge badge-pill'}}
+          {{else}}
+            <span class="text-muted">none</span>
+          {{/if}}
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

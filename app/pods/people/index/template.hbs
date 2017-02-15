@@ -1,0 +1,26 @@
+<form class="form-inline">
+  {{input type="text" value=filterTerm placeholder="Search..." classNames="form-control"}}
+  <select class="form-control">
+    {{#each filterFields as |field|}}
+      <option value="{{field.value}}">{{field.label}}</option>
+    {{/each}}
+  </select>
+
+  {{#if session.isAuthenticated}}
+    {{link-to 'Add Person' 'people.new' class="btn btn-success"}}
+  {{/if}}
+</form>
+
+{{#if settings.peopleShowGrid}}
+  <div class="card-deck">
+    {{#each filteredPeople as |person|}}
+      {{person-card person=person}}
+    {{/each}}
+  </div>
+{{else}}
+  {{person-table
+    people=filteredPeople
+    filterTerm=filterTerm
+    filterField=filterField
+  }}
+{{/if}}

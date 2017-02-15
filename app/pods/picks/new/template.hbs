@@ -1,0 +1,57 @@
+<form class="form-inline">
+  {{link-to 'Back to Picks' 'picks.index' tagName='button' classNames='btn btn-success'}}
+</form>
+
+<div class="row">
+  {{#bs-form formLayout='horizontal' model=pick classNames='col-xs-12 col-sm-8 col-md-6' as |form|}}
+      {{form.element controlType="text" label="Name" property="name"}}
+      {{form.element controlType="text" label="Category" property="category"}}
+      {{form.element controlType="text" label="URL" property="url"}}
+      {{form.element controlType="textarea" label="Description" property="description" rows=5}}
+      {{form.element controlType="textarea" label="Show Notes Text" property="showNotesText" rows=5}}
+      <div class="text-center">
+        <button class="btn btn-primary" type="submit" {{action 'savePick' pick}}>Save</button>
+        <button class="btn btn-danger" type="submit" {{action 'cancelPick' pick}}>Cancel</button>
+      </div>
+  {{/bs-form}}
+</div>
+
+{{!-- <h1>Add a new Pick</h1>
+
+<div class="ui grid">
+  <div class="ui sixteen wide column">
+    <div class="ui form">
+      <div class="ui grid">
+        <div class="eight wide column">
+          <div class="field">
+            <label>Name</label>
+            {{input type="text" value=pick.name}}
+          </div>
+
+          <div class="field">
+            <label>Category</label>
+            {{input type="text" value=pick.category}}
+          </div>
+
+          <div class="field">
+            <label>URL</label>
+            {{input type="text" value=pick.url}}
+          </div>
+
+          <div class="field">
+            <label>Description</label>
+            {{textarea value=pick.description}}
+          </div>
+
+          <div class="field">
+            <label>Show Notes Text</label>
+            {{input type="text" value=pick.showNotesText}}
+          </div>
+        </div>
+      </div>
+
+      <button class="ui button" type="submit" {{action 'savePick' pick}}>Submit</button>
+    </div>
+  </div>
+</div>
+ --}}

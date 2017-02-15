@@ -1,0 +1,344 @@
+<form class="form-inline">
+  {{link-to 'Back to Episodes' 'episodes.index' tagName='button' classNames='btn btn-success'}}
+</form>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-sm-push-6">
+    {{#if episode.youtubeId}}
+      <div class="embed-responsive embed-responsive-16by9">
+        {{ember-youtube ytid=model.youtubeId playerVars=playerVars classNames='embed-responsive-item'}}
+      </div>
+    {{else}}
+      <img width="100%" src="/assets/images/no-episode-available.jpg" />
+    {{/if}}
+  </div>
+
+  {{#bs-form formLayout='horizontal' model=episode classNames='col-xs-12 col-sm-6 col-sm-pull-6' as |form|}}
+      {{form.element controlType="number" label="Episode Number" property="episodeNumber" min=1}}
+      {{form.element controlType="text" label="Episode Name" property="episodeName"}}
+      {{form.element controlType="textarea" label="Description" property="description" rows=5}}
+      {{form.element controlType="text" label="Show Notes URL" property="showNotesURL" rows=5}}
+      {{form.element controlType="text" label="Youtube URL or ID" property="youtubeId" rows=5}}
+      {{#form.element label="Hosts" property="hosts" as |el|}}
+        {{#power-select-multiple
+          options=possibleHosts
+          searchField="fullName"
+          selected=episode.hosts
+          onchange=(action (mut episode.hosts))
+          as |person|
+        }}
+          <img src="{{if person.photo person.photo}}" style="max-width: 25px;border-radius: 5px;padding: 3px 0;    margin-left: 3px;" />
+          <strong style="display:inline-block; vertical-align: center;">{{person.fullName}}</strong>
+        {{/power-select-multiple}}
+      {{/form.element}}
+      {{#form.element label="Contributors" property="contributors" as |el|}}
+        {{#power-select-multiple
+          options=possibleContributors
+          searchField="fullName"
+          selected=episode.contributors
+          onchange=(action (mut episode.contributors))
+          as |person|
+        }}
+          <img src="{{if person.photo person.photo}}" style="max-width: 25px;border-radius: 5px;padding: 3px 0;    margin-left: 3px;" />
+          <strong style="display:inline-block; vertical-align: center;">{{person.fullName}}</strong>
+        {{/power-select-multiple}}
+      {{/form.element}}
+      {{#form.element label="Guests" property="guests" as |el|}}
+        {{#power-select-multiple
+          options=possibleGuests
+          searchField="fullName"
+          selected=episode.guests
+          onchange=(action (mut episode.guests))
+          as |person|
+        }}
+          <img src="{{if person.photo person.photo}}" style="max-width: 25px;border-radius: 5px;padding: 3px 0;    margin-left: 3px;" />
+          <strong style="display:inline-block; vertical-align: center;">{{person.fullName}}</strong>
+        {{/power-select-multiple}}
+      {{/form.element}}
+      {{#form.element label="Air Date" property="airDate" as |el|}}
+        {{pikaday-input
+          value=model.airDate
+          format="MM/DD/YYYY"
+          firstDay=0
+          maxDate=currDate
+          classNames='form-control'
+          onSelection=(action 'updateAirDate')
+        }}
+      {{/form.element}}
+      {{form.element controlType="text" readonly=true label="Date Created" property="createdAt"}}
+      {{form.element controlType="text" readonly=true label="Date Updated" property="updatedAt"}}
+      {{form.element controlType="checkbox" label="Requires Review" property="requiresReview"}}
+      <div class="form-group">
+        <div class="col-md-8 col-md-push-4">
+          <p class="bg-danger" style="padding: 15px">Only turn off "Requires Review" if you are sure that the data for this episode is complete.</p>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary" type="submit" {{action 'saveEpisode' episode}}>Save</button>
+        <button class="btn btn-danger" type="submit" {{action 'cancelEpisode' episode}}>Cancel</button>
+      </div>
+  {{/bs-form}}
+</div>
+
+
+{{!-- {{#link-to 'episodes.index' tagName='button' classNames='ui button'}}
+  Back to Episodes
+{{/link-to}}
+
+<div class="ui grid">
+  <div class="ui ten wide column">
+    <div class="ui form">
+      <div class="ui grid centered">
+        <div class="twelve wide column">
+          <div class="field">
+            <label>Episode Number</label>
+            {{input type="text" value=model.episodeNumber}}
+          </div>
+
+          <div class="field">
+            <label>Episode Name</label>
+            {{input type="text" value=model.episodeName}}
+          </div>
+
+          <div class="field">
+            <label>Description</label>
+            {{textarea rows="2" value=model.description}}
+          </div>
+
+          <div class="field">
+            <label>Show Notes</label>
+            {{input type="text" value=model.showNotesURL}}
+          </div>
+
+          <div class="field">
+            <label>Download Link</label>
+            {{input type="text" value=model.downloadURL}}
+          </div>
+
+          <div class="field">
+            <label>Youtube URL or ID</label>
+            {{input type="text" value=model.youtubeId key-up="parseYoutubeURL"}}
+          </div>
+
+          <div class="field">
+            <label>Host(s)</label>
+            {{#ui-dropdown class="search selection multiple dropdown" selected=model.hosts onChange=(action (mut model.hosts)) as |execute mapper|}}
+              <div class="default text"></div>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                {{#each people as |person|}}
+                  <div class="item  {{unless (array-contains possibleHosts person) 'disabled'}}" data-value="{{map-value mapper person}}">
+                    <img class='ui avatar image' src='{{person.photo}}' />
+                    {{person.fullName}}
+                  </div>
+                {{/each}}
+              </div>
+            {{/ui-dropdown}}
+          </div>
+
+          <div class="field">
+            <label>Contributor(s)</label>
+            {{#ui-dropdown class="search selection multiple dropdown" selected=model.contributors onChange=(action (mut model.contributors)) as |execute mapper|}}
+              <div class="default text"></div>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                {{#each people as |person|}}
+                  <div class="item {{unless (array-contains possibleContributors person) 'disabled'}}" data-value="{{map-value mapper person}}">
+                    <img class='ui avatar image' src='{{person.photo}}' />
+                    {{person.fullName}}
+                  </div>
+                {{/each}}
+              </div>
+            {{/ui-dropdown}}
+          </div>
+
+          <div class="field">
+            <label>Guest(s)</label>
+            {{#ui-dropdown class="search selection multiple dropdown" selected=model.guests onChange=(action (mut model.guests)) as |execute mapper|}}
+              <div class="default text"></div>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                {{#each people as |person|}}
+                  <div class="item  {{unless (array-contains possibleGuests person) 'disabled'}}" data-value="{{map-value mapper person}}">
+                    <img class='ui avatar image' src='{{person.photo}}' />
+                    {{person.fullName}}
+                  </div>
+                {{/each}}
+              </div>
+            {{/ui-dropdown}}
+          </div>
+
+          <div class="field">
+            <label>Topics</label>
+            {{#ui-dropdown class="search selection multiple dropdown" selected=model.topics onChange=(action (mut model.topics)) as |execute mapper|}}
+              <div class="default text"></div>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                {{#each topics as |topic|}}
+                  <div class="item" data-value="{{map-value mapper topic}}">
+                    {{topic.name}}
+                  </div>
+                {{/each}}
+              </div>
+            {{/ui-dropdown}}
+          </div>
+
+          <div class="field">
+            <label>Picks</label>
+            {{#ui-dropdown class="search selection multiple dropdown" selected=model.picks onChange=(action (mut model.picks)) as |execute mapper|}}
+              <div class="default text"></div>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                {{#each picks as |pick|}}
+                  <div class="item" data-value="{{map-value mapper pick}}">
+                    {{pick.name}}
+                  </div>
+                {{/each}}
+              </div>
+            {{/ui-dropdown}}
+          </div>
+
+          <div class="field">
+            <label>Air Date</label>
+            {{pikaday-input
+              value=model.airDate
+              format="MM/DD/YYYY"
+              maxDate=currDate
+              onSelection=(action 'updateAirDate')
+            }}
+          </div>
+
+          <div class="field">
+            <label>Date Created</label>
+            {{input type="text" value=model.createdAt readonly=true}}
+          </div>
+
+          <div class="field">
+            <label>Last Updated</label>
+            {{input type="text" value=model.updatedAt readonly=true}}
+          </div>
+
+          <button class="ui positive button right floated" type="submit" {{action 'saveEpisode' model}}>Save</button>
+
+          <button class="ui negative button right floated" type="submit" {{action 'cancelEpisode' model}}>Cancel</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> --}}
+{{!-- <h1>Add a new Episode</h1>
+
+<div class="ui grid">
+  <div class="ui ten wide column">
+    <div class="ui form">
+      <div class="ui grid">
+        <div class="twelve wide column">
+          <div class="field">
+            <label>Episode Number</label>
+            {{input type="number" value=episode.episodeNumber}}
+          </div>
+
+          <div class="field">
+            <label>Episode Name</label>
+            {{input type="text" value=episode.episodeName}}
+          </div>
+
+          <div class="field">
+            <label>Description</label>
+            {{textarea value=episode.description}}
+          </div>
+
+          <div class="field">
+            <label>Show Notes</label>
+            {{input type='text' value=episode.showNotesURL}}
+          </div>
+
+          <div class="field">
+            <label>Download Link</label>
+            {{input type='text' value=episode.downloadLink}}
+          </div>
+
+          <div class="field">
+            <label>Youtube URL or ID</label>
+            {{input type="text" value=episode.youtubeId key-up="parseYoutubeURL"}}
+          </div>
+
+          <div class="field">
+            <label>Host(s)</label>
+            {{#ui-dropdown class="search selection multiple dropdown" onChange=(action (mut episode.hosts)) as |execute mapper|}}
+              <div class="default text"></div>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                {{#each people as |person|}}
+                  <div class="item  {{unless (array-contains possibleHosts person) 'disabled'}}" data-value="{{map-value mapper person}}">
+                    {{lazy-image
+                      url=(if person.photo person.photo '/assets/images/default-image.png')
+                      alt=(concat 'Photo for ' person.fullName)
+                      width=40
+                      height=40
+                      class='ui avatar image'
+                    }}
+                    {{person.fullName}}
+                  </div>
+                {{/each}}
+              </div>
+            {{/ui-dropdown}}
+          </div>
+
+          <div class="field">
+            <label>Contributor(s)</label>
+            {{#ui-dropdown class="search selection multiple dropdown" onChange=(action (mut episode.contributors)) as |execute mapper|}}
+              <div class="default text"></div>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                {{#each people as |person|}}
+                  <div class="item {{unless (array-contains possibleContributors person) 'disabled'}}" data-value="{{map-value mapper person}}">
+                    {{lazy-image
+                      url=(if person.photo person.photo '/assets/images/default-image.png')
+                      alt=(concat 'Photo for ' person.fullName)
+                      width=40
+                      height=40
+                      class='ui avatar image'
+                    }}
+                    {{person.fullName}}
+                  </div>
+                {{/each}}
+              </div>
+            {{/ui-dropdown}}
+          </div>
+
+          <div class="field">
+            <label>Guest(s)</label>
+            {{#ui-dropdown class="search selection multiple dropdown" onChange=(action (mut episode.guests)) as |execute mapper|}}
+              <div class="default text"></div>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                {{#each people as |person|}}
+                  <div class="item  {{unless (array-contains possibleGuests person) 'disabled'}}" data-value="{{map-value mapper person}}">
+                    {{lazy-image
+                      url=(if person.photo person.photo '/assets/images/default-image.png')
+                      alt=(concat 'Photo for ' person.fullName)
+                      width=40
+                      height=40
+                      class='ui avatar image'
+                    }}
+                    {{person.fullName}}
+                  </div>
+                {{/each}}
+              </div>
+            {{/ui-dropdown}}
+          </div>
+
+          <div class="field">
+            <label>Air Date</label>
+            {{pikaday-input value=episode.airDate format="MM/DD/YYYY"}}
+          </div>
+        </div>
+      </div>
+
+      <button class="ui button" type="submit" {{action 'saveEpisode' episode}}>Submit</button>
+    </div>
+  </div>
+</div>
+ --}}

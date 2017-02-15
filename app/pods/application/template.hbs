@@ -1,0 +1,49 @@
+{{#bs-navbar type='inverse' position='fixed-top' fluid=fluid collapsed=menuCollapsed as |navbar|}}
+  <div class="navbar-header">
+    {{#navbar.toggle}}
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    {{/navbar.toggle}}
+   {{#link-to "index" class="navbar-brand"}}DTNS{{/link-to}}
+  </div>
+  {{#navbar.content}}
+    {{#navbar.nav as |nav|}}
+      {{#nav.item}}
+        {{nav.link-to 'Episodes' 'episodes' current-when='episodes episode' tagName='a'}}
+      {{/nav.item}}
+      {{#nav.item}}
+        {{nav.link-to 'People' 'people' current-when='people person' tagName='a'}}
+      {{/nav.item}}
+      {{#nav.item}}
+        {{nav.link-to 'Picks' 'picks' current-when='picks pick' tagName='a'}}
+      {{/nav.item}}
+      {{#nav.item}}
+        {{nav.link-to 'Topics' 'topics' current-when='topics topic' tagName='a'}}
+      {{/nav.item}}
+    {{/navbar.nav}}
+
+    {{#navbar.nav classNames='navbar-right' as |nav|}}
+      {{#nav.item}}
+        {{nav.link-to 'About' 'about' tagName='a'}}
+      {{/nav.item}}
+
+      {{#nav.item}}
+        {{nav.link-to 'Settings' 'settings' tagName='a'}}
+      {{/nav.item}}
+
+      {{#nav.item}}
+        {{#if session.isAuthenticated}}
+          <a href='#'{{action 'logoutUser'}}>Log out</a>
+        {{else}}
+          {{nav.link-to 'Log in' 'login'}}
+        {{/if}}
+      {{/nav.item}}
+    {{/navbar.nav}}
+  {{/navbar.content}}
+{{/bs-navbar}}
+
+<div id="main-content" class="container">
+  {{outlet}}
+</div>
