@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import ClickableItemMixin from 'dtns-frontend/mixins/clickable-item';
+import ClickableItemMixin from 'dtns-archive/mixins/clickable-item';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | clickable item');

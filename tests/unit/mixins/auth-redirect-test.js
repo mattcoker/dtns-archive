@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import AuthRedirectMixin from 'dtns-frontend/mixins/auth-redirect';
+import AuthRedirectMixin from 'dtns-archive/mixins/auth-redirect';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | auth redirect');

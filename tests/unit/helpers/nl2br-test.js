@@ -1,5 +1,5 @@
 
-import { nl2br } from 'dtns-frontend/helpers/nl2br';
+import { nl2br } from 'dtns-archive/helpers/nl2br';
 import { module, test } from 'qunit';
 
 module('Unit | Helper | nl2br');

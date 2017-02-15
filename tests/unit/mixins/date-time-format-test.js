@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import DateTimeFormatMixin from 'dtns-frontend/mixins/date-time-format';
+import DateTimeFormatMixin from 'dtns-archive/mixins/date-time-format';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | date time format');
