@@ -7,14 +7,13 @@
 {{#if episode.youtubeId}}
   <div class="embed-responsive embed-responsive-16by9 card-img-top">
   {{#if showVideo}}
-    <!-- 16:9 aspect ratio -->
       {{ember-youtube ytid=episode.youtubeId playerVars=playerVars width='100%' height=147 classNames='embed-responsive-item'}}
   {{else}}
-    <img class="embed-responsive-item" width="100%" src="/assets/images/episode-play.jpg" {{action 'playVideo'}}/>
+    <img class="embed-responsive-item" src="/assets/images/episode-play.jpg" {{action 'playVideo'}}/>
   {{/if}}
   </div>
 {{else}}
-  <img class="card-img-top" width="100%" height="147px" src="/assets/images/no-episode-available.jpg" />
+  <img class="card-img-top" src="/assets/images/no-episode-available.jpg" />
 {{/if}}
 
 {{#link-to 'episode.index' episode tagName='div' classNames='card-block'}}
@@ -45,11 +44,7 @@
       {{moment-format episode.airDate settings.globalDateFormat}}
     {{/highlight-filter}}
   </h6>
-  {{!-- <p class="card-text">
-    <small class="text-muted">
 
-    </small>
-  </p> --}}
   <div class="card-text mb-2">
     {{#highlight-filter
       fieldName='description'
@@ -69,79 +64,3 @@
     <span class="text-muted">none</span>
   {{/each}}
 </div>
-
-
-{{!-- <div class="card">
-  {{#if episode.requiresReview}}
-    <a class="ui yellow right corner label">
-      {{#ui-popup
-        content="This episode was automatically created and may be missing some data."
-        variation="mini"
-      }}
-        <i class="warning sign icon"></i>
-      {{/ui-popup}}
-    </a>
-  {{/if}}
-
-  {{#if episode.youtubeId}}
-    {{ember-youtube ytid=episode.youtubeId playerVars=myPlayerVars width="100%" height=202}}
-  {{else}}
-    {{#link-to 'episode.index' episode.id tagName='div' classNames='fallback-container'}}
-      <div class="fallback-overlay">
-        <div class="content">Coming Soon</div>
-      </div>
-
-      <img class="video-fallback-poster" src="/assets/images/default-episode-image.png" />
-    {{/link-to}}
-  {{/if}}
-
-  {{#link-to 'episode.index' episode.id tagName='div' classNames='content'}}
-    <div class="header">
-      {{#highlight-filter
-        fieldName='episodeNumber'
-        filterTerm=filterTerm
-        filterField=filterField
-      }}
-        {{episode.episodeNumber}}:
-      {{/highlight-filter}}
-
-      {{#highlight-filter
-        fieldName='episodeName'
-        filterTerm=filterTerm
-        filterField=filterField
-      }}
-        {{truncate episode.episodeName 35}}
-      {{/highlight-filter}}
-    </div>
-    <div class="meta">
-      {{#highlight-filter
-        fieldName='airDate'
-        filterTerm=filterTerm
-        filterField=filterField
-      }}
-        {{moment-format episode.airDate settings.globalDateFormat}}
-      {{/highlight-filter}}
-    </div>
-    <div class="description">
-      {{#highlight-filter
-        fieldName='description'
-        filterTerm=filterTerm
-        filterField=filterField
-      }}
-        {{{truncate episode.description 140}}}
-      {{/highlight-filter}}
-    </div>
-  {{/link-to}}
-
-  <div class="extra content">
-    <div>
-      <i class="tags icon"></i>
-      <div class="topic-container">
-        {{#each episode.topics as |topic|}}
-          {{topic-label model=topic}}
-        {{/each}}
-      </div>
-    </div>
-  </div>
-</div>
- --}}
