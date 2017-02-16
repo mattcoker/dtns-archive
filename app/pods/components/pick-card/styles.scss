@@ -1,0 +1,18 @@
+// Pick Categories
+// Icons licensed by http://iconmonstr.com/
+.card-block {
+  height: 100%;
+  background-size: 70px;
+  background-color: transparent;
+  background-position: top right;
+  background-origin: content-box;
+  background-repeat: no-repeat;
+  background-image: url('/assets/images/icons/misc.png');
+}
+
+$categories-list: app apparel art book dtns education electronics entertainment event extension-plugin game hardware misc movie music news podcast service software tv-show website;
+@each $current-category in $categories-list {
+  .pick-category-#{$current-category} .card-block{
+    background-image: url('/assets/images/icons/#{$current-category}.png');
+  }
+}

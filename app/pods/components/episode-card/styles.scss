@@ -1,0 +1,27 @@
+.corner-ribbon {
+  width: 70px;
+  background: #ec0;
+  position: absolute;
+  text-align: center;
+  line-height: 35px;
+  letter-spacing: 1px;
+  color: #000;
+  top: -5px;
+  right: -22px;
+  left: auto;
+  z-index: 1;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  .glyphicon {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+}
+
+img {
+  width: 100%;
+
+  &.card-item-top {
+    height: 147px;
+  }
+}

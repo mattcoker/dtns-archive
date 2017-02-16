@@ -1,0 +1,18 @@
+.edit-link {
+  display: block;
+  position: absolute;
+  z-index: 999;
+  background: lightgrey;
+  color: black !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  font-size: 16px;
+  width: 100%;
+  padding: 5px 0;
+  top: -32px;
+  transition: .25s ease top;
+}
+
+&:hover .edit-link {
+  top: 0;
+}
