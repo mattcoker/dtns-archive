@@ -39,55 +39,35 @@
       <li class="list-group-item">
         <div class="field-name">Hosts</div>
         <div class="value">
-          {{#each model.hosts as |person|}}
-            {{link-to person.fullName 'person.index' person.id classNames='label label-default'}}
-          {{else}}
-            <span class="text-muted">none</span>
-          {{/each}}
+          {{person-link-collection people=model.hosts}}
         </div>
       </li>
 
       <li class="list-group-item">
         <div class="field-name">Contributors</div>
         <div class="value">
-          {{#each model.contributors as |person|}}
-            {{link-to person.fullName 'person.index' person.id classNames='label label-default'}}
-          {{else}}
-            <span class="text-muted">none</span>
-          {{/each}}
+          {{person-link-collection people=model.contributors}}
         </div>
       </li>
 
       <li class="list-group-item">
         <div class="field-name">Guests</div>
         <div class="value">
-          {{#each model.guests as |person|}}
-            {{link-to person.fullName 'person.index' person.id classNames='label label-default'}}
-          {{else}}
-            <span class="text-muted">none</span>
-          {{/each}}
+          {{person-link-collection people=model.guests}}
         </div>
       </li>
 
       <li class="list-group-item">
         <div class="field-name">Topics</div>
         <div class="value">
-          {{#each model.topics as |topic|}}
-            {{topic-label model=topic}}
-          {{else}}
-            <span class="text-muted">none</span>
-          {{/each}}
+          {{topic-link-collection topics=model.topics}}
         </div>
       </li>
 
       <li class="list-group-item">
         <div class="field-name">Picks</div>
         <div class="value">
-          {{#each model.picks as |pick|}}
-            {{link-to pick.name 'pick.index' pick.id tagName='a' classNames='label label-default'}}
-          {{else}}
-            <span class="text-muted">none</span>
-          {{/each}}
+          {{pick-link-collection picks=model.picks}}
         </div>
       </li>
 

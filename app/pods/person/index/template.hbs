@@ -39,33 +39,30 @@
       <li class="list-group-item">
         <div class="field-name">Episodes as Host</div>
         <div class="value">
-          {{#each model.sortedEpisodesAsHost as |episode|}}
-            {{link-to (concat '#' episode.episodeNumber) 'episode.index' episode classNames='label label-default episode-label'}}
-          {{else}}
-            <span class="text-muted">none</span>
-          {{/each}}
+          {{episode-link-collection
+            episodes=model.episodesAsHost
+            fullName=model.fullName
+          }}
         </div>
       </li>
 
       <li class="list-group-item">
         <div class="field-name">Episodes as Contributor</div>
         <div class="value">
-          {{#each model.sortedEpisodesAsContributor as |episode|}}
-            {{link-to (concat '#' episode.episodeNumber) 'episode.index' episode classNames='label label-default episode-label'}}
-          {{else}}
-            <span class="text-muted">none</span>
-          {{/each}}
+          {{episode-link-collection
+            episodes=model.episodesAsContributor
+            fullName=model.fullName
+          }}
         </div>
       </li>
 
       <li class="list-group-item">
         <div class="field-name">Episodes as Guest</div>
         <div class="value">
-          {{#each model.sortedEpisodesAsGuest as |episode|}}
-            {{link-to (concat '#' episode.episodeNumber) 'episode.index' episode classNames='label label-default episode-label'}}
-          {{else}}
-            <span class="text-muted">none</span>
-          {{/each}}
+          {{episode-link-collection
+            episodes=model.episodesAsGuest
+            fullName=model.fullName
+          }}
         </div>
       </li>
     </ul>
