@@ -10,7 +10,7 @@
   "scripts": {
     "build": "ember build",
     "postinstall": "npm install -g bower && bower install",
-    "start": "ember server",
+    "start": "ember fastboot --serve-assets --environment production",
     "test": "ember test"
   },
   "repository": "",
