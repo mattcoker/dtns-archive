@@ -1,0 +1,18 @@
+{{#each recentEpisodes as |episode|}}
+  {{link-to (concat '#' episode.episodeNumber) 'episode.index' episode.id classNames='label label-default'}}
+{{else}}
+  <span class="text-muted">none</span>
+{{/each}}
+
+{{#if hasMoreEpisodes }}
+  {{#bs-button size="sm" classNames='episodes-modal' onClick=(action (mut showEpisodesModal) true)}}and {{sub episodes.length recentEpisodes.length }} more...{{/bs-button}}
+
+  {{#bs-modal open=showEpisodesModal size="lg" onHidden=(action (mut showEpisodesModal) false) as |modal|}}
+    {{#modal.header}}
+       <h4 class="modal-title">All {{episodes.length}} episodes featuring {{fullName}}</h4>
+     {{/modal.header}}
+     {{#modal.body}}
+       {{episodes-display episodes=episodes}}
+     {{/modal.body}}
+  {{/bs-modal}}
+{{/if}}
