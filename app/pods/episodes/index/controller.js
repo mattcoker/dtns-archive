@@ -36,6 +36,12 @@ export default Ember.Controller.extend({
       }
       return (targetValue.toLowerCase().indexOf(filterTerm) > -1);
     });
-  })
+  }),
+
+  actions: {
+    updateFilterField(arg) {
+      this.set('filterField', arg);
+    },
+  }
 
 });
