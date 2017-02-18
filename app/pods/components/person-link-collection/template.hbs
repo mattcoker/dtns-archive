@@ -1,0 +1,5 @@
+{{#each people as |person|}}
+  {{link-to person.fullName 'person.index' person.id classNames='label label-default'}}
+{{else}}
+  <span class="text-muted">none</span>
+{{/each}}
