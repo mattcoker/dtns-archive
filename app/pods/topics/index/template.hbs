@@ -14,8 +14,12 @@
 
 {{#if settings.topicsShowGrid}}
   <div class="card-deck">
-    {{#each model as |topic|}}
-      {{topic-card model=topic}}
+    {{#each filteredTopics as |topic|}}
+      {{topic-card
+        model=topic
+        filterTerm=filterTerm
+        filterField=filterField
+      }}
     {{/each}}
   </div>
 {{else}}

@@ -14,8 +14,12 @@
 
 {{#if settings.picksShowGrid}}
   <div class="card-deck">
-    {{#each model as |pick|}}
-      {{pick-card model=pick}}
+    {{#each filteredPicks as |pick|}}
+      {{pick-card
+        model=pick
+        filterTerm=filterTerm
+        filterField=filterField
+      }}
     {{/each}}
   </div>
 {{else}}
