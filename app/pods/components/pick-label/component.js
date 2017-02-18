@@ -4,8 +4,7 @@ export default Ember.Component.extend({
   router: Ember.inject.service('routing'),
 
   tagName: 'a',
-  classNames: ['label', 'label-default'],
-  classNameBindings: ['isPreview:massive','isPreview::hoverable'],
+  classNames: ['label', 'label-default', 'hoverable'],
 
   name: Ember.computed.alias('model.name'),
 

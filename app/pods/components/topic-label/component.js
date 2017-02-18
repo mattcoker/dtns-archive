@@ -3,9 +3,10 @@ import CspStyleMixin from 'ember-cli-csp-style/mixins/csp-style';
 
 export default Ember.Component.extend(CspStyleMixin, {
   router: Ember.inject.service('routing'),
+
   tagName: 'span',
-  classNames: ['badge', 'badge-pill', 'topic-label', 'hoverable'],
-  classNameBindings: ['isPreview:preview'],
+  classNames: ['badge', 'badge-pill'],
+  classNameBindings: ['isPreview:preview:hoverable'],
   styleBindings: ['backgroundColor:background-color','textColor:color'],
 
   isPreview: false,
