@@ -13,18 +13,13 @@ export default Model.extend({
   episodesAsHost: DS.hasMany('episode', { inverse: null }),
   episodesAsContributor: DS.hasMany('episode', { inverse: null }),
   episodesAsGuest: DS.hasMany('episode', { async: true, inverse: null }),
+  createdAt: attr('date', { defaultValue() { return new Date(); } }),
+  updatedAt: attr('date', { defaultValue() { return new Date(); } }),
 
   episodeSortingDesc: ['airDate:desc'],
-  sortedEpisodesAsHost: Ember.computed.sort('episodesAsHost', 'episodeSortingDesc'),
-  sortedEpisodesAsContributor: Ember.computed.sort('episodesAsContributor', 'episodeSortingDesc'),
-  sortedEpisodesAsGuest: Ember.computed.sort('episodesAsGuest', 'episodeSortingDesc'),
-
-  createdAt: attr('date', {
-    defaultValue() { return new Date(); }
-  }),
-  updatedAt: attr('date', {
-    defaultValue() { return new Date(); }
-  }),
+  sortedEpisodesAsHost: Ember.computed.sort('episodesAsHost.[]', 'episodeSortingDesc'),
+  sortedEpisodesAsContributor: Ember.computed.sort('episodesAsContributor.[]', 'episodeSortingDesc'),
+  sortedEpisodesAsGuest: Ember.computed.sort('episodesAsGuest.[]', 'episodeSortingDesc'),
 
   fullName: Ember.computed('firstName', 'lastName', function() {
     const { firstName, lastName } = this.getProperties('firstName', 'lastName');
