@@ -71,8 +71,8 @@
             {{/highlight-filter}}
           </td>
 
-          <td class="collapsing center aligned">
-            {{link-to 'View' 'episode.index' episode.id}}
+          <td class="text-center">
+            {{link-to 'Details' 'episode.index' episode.id}}
             {{#if session.isAuthenticated}}
               | {{link-to 'Edit' 'episode.edit' episode.id}}
             {{/if}}

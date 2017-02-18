@@ -61,7 +61,7 @@
 
 
           <td class="text-center">
-            {{link-to 'View' 'person.index' person.id}}
+            {{link-to 'Details' 'person.index' person.id}}
             {{#if session.isAuthenticated}}
               | {{link-to 'Edit' 'person.edit' person.id}}
             {{/if}}
