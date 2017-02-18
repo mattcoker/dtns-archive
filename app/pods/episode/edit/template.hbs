@@ -27,8 +27,8 @@
           onchange=(action (mut model.hosts))
           as |person|
         }}
-          <img src="{{if person.photo person.photo}}" style="max-width: 25px;border-radius: 5px;padding: 3px 0;    margin-left: 3px;" />
-          <strong style="display:inline-block; vertical-align: center;">{{person.fullName}}</strong>
+          <img src="{{if person.photo person.photo}}"/>
+          <strong>{{person.fullName}}</strong>
         {{/power-select-multiple}}
       {{/form.element}}
       {{#form.element label="Contributors" property="contributors" as |el|}}
@@ -39,8 +39,8 @@
           onchange=(action (mut model.contributors))
           as |person|
         }}
-          <img src="{{if person.photo person.photo}}" style="max-width: 25px;border-radius: 5px;padding: 3px 0;    margin-left: 3px;" />
-          <strong style="display:inline-block; vertical-align: center;">{{person.fullName}}</strong>
+          <img src="{{if person.photo person.photo}}" />
+          <strong>{{person.fullName}}</strong>
         {{/power-select-multiple}}
       {{/form.element}}
       {{#form.element label="Guests" property="guests" as |el|}}
@@ -51,8 +51,8 @@
           onchange=(action (mut model.guests))
           as |person|
         }}
-          <img src="{{if person.photo person.photo}}" style="max-width: 25px;border-radius: 5px;padding: 3px 0;    margin-left: 3px;" />
-          <strong style="display:inline-block; vertical-align: center;">{{person.fullName}}</strong>
+          <img src="{{if person.photo person.photo}}"/>
+          <strong>{{person.fullName}}</strong>
         {{/power-select-multiple}}
       {{/form.element}}
       {{#form.element label="Picks" property="picks" as |el|}}
@@ -63,7 +63,7 @@
           onchange=(action (mut model.picks))
           as |pick|
         }}
-          <strong style="display:inline-block; vertical-align: center;">{{pick.name}}</strong>
+          <strong>{{pick.name}}</strong>
         {{/power-select-multiple}}
       {{/form.element}}
       {{#form.element label="Topics" property="topics" as |el|}}
@@ -74,7 +74,7 @@
           onchange=(action (mut model.topics))
           as |topic|
         }}
-          <strong style="display:inline-block; vertical-align: center;">{{topic.name}}</strong>
+          <strong>{{topic.name}}</strong>
         {{/power-select-multiple}}
       {{/form.element}}
       {{#form.element label="Air Date" property="airDate" as |el|}}
@@ -92,7 +92,9 @@
       {{form.element controlType="checkbox" label="Requires Review" property="requiresReview"}}
       <div class="form-group">
         <div class="col-md-8 col-md-push-4">
-          <p class="bg-danger" style="padding: 15px">Only turn off "Requires Review" if you are sure that the data for this episode is complete.</p>
+          <div class="alert alert-danger">
+            Only turn off "Requires Review" if you are sure that the data for this episode is complete.
+          </div>
         </div>
       </div>
       <div class="text-center">
@@ -101,151 +103,3 @@
       </div>
   {{/bs-form}}
 </div>
-
-
-{{!-- {{#link-to 'episodes.index' tagName='button' classNames='ui button'}}
-  Back to Episodes
-{{/link-to}}
-
-<div class="ui grid">
-  <div class="ui ten wide column">
-    <div class="ui form">
-      <div class="ui grid centered">
-        <div class="twelve wide column">
-          <div class="field">
-            <label>Episode Number</label>
-            {{input type="text" value=model.episodeNumber}}
-          </div>
-
-          <div class="field">
-            <label>Episode Name</label>
-            {{input type="text" value=model.episodeName}}
-          </div>
-
-          <div class="field">
-            <label>Description</label>
-            {{textarea rows="2" value=model.description}}
-          </div>
-
-          <div class="field">
-            <label>Show Notes</label>
-            {{input type="text" value=model.showNotesURL}}
-          </div>
-
-          <div class="field">
-            <label>Download Link</label>
-            {{input type="text" value=model.downloadURL}}
-          </div>
-
-          <div class="field">
-            <label>Youtube URL or ID</label>
-            {{input type="text" value=model.youtubeId key-up="parseYoutubeURL"}}
-          </div>
-
-          <div class="field">
-            <label>Host(s)</label>
-            {{#ui-dropdown class="search selection multiple dropdown" selected=model.hosts onChange=(action (mut model.hosts)) as |execute mapper|}}
-              <div class="default text"></div>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                {{#each people as |person|}}
-                  <div class="item  {{unless (array-contains possibleHosts person) 'disabled'}}" data-value="{{map-value mapper person}}">
-                    <img class='ui avatar image' src='{{person.photo}}' />
-                    {{person.fullName}}
-                  </div>
-                {{/each}}
-              </div>
-            {{/ui-dropdown}}
-          </div>
-
-          <div class="field">
-            <label>Contributor(s)</label>
-            {{#ui-dropdown class="search selection multiple dropdown" selected=model.contributors onChange=(action (mut model.contributors)) as |execute mapper|}}
-              <div class="default text"></div>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                {{#each people as |person|}}
-                  <div class="item {{unless (array-contains possibleContributors person) 'disabled'}}" data-value="{{map-value mapper person}}">
-                    <img class='ui avatar image' src='{{person.photo}}' />
-                    {{person.fullName}}
-                  </div>
-                {{/each}}
-              </div>
-            {{/ui-dropdown}}
-          </div>
-
-          <div class="field">
-            <label>Guest(s)</label>
-            {{#ui-dropdown class="search selection multiple dropdown" selected=model.guests onChange=(action (mut model.guests)) as |execute mapper|}}
-              <div class="default text"></div>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                {{#each people as |person|}}
-                  <div class="item  {{unless (array-contains possibleGuests person) 'disabled'}}" data-value="{{map-value mapper person}}">
-                    <img class='ui avatar image' src='{{person.photo}}' />
-                    {{person.fullName}}
-                  </div>
-                {{/each}}
-              </div>
-            {{/ui-dropdown}}
-          </div>
-
-          <div class="field">
-            <label>Topics</label>
-            {{#ui-dropdown class="search selection multiple dropdown" selected=model.topics onChange=(action (mut model.topics)) as |execute mapper|}}
-              <div class="default text"></div>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                {{#each topics as |topic|}}
-                  <div class="item" data-value="{{map-value mapper topic}}">
-                    {{topic.name}}
-                  </div>
-                {{/each}}
-              </div>
-            {{/ui-dropdown}}
-          </div>
-
-          <div class="field">
-            <label>Picks</label>
-            {{#ui-dropdown class="search selection multiple dropdown" selected=model.picks onChange=(action (mut model.picks)) as |execute mapper|}}
-              <div class="default text"></div>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                {{#each picks as |pick|}}
-                  <div class="item" data-value="{{map-value mapper pick}}">
-                    {{pick.name}}
-                  </div>
-                {{/each}}
-              </div>
-            {{/ui-dropdown}}
-          </div>
-
-          <div class="field">
-            <label>Air Date</label>
-            {{pikaday-input
-              value=model.airDate
-              format="MM/DD/YYYY"
-              maxDate=currDate
-              onSelection=(action 'updateAirDate')
-            }}
-          </div>
-
-          <div class="field">
-            <label>Date Created</label>
-            {{input type="text" value=model.createdAt readonly=true}}
-          </div>
-
-          <div class="field">
-            <label>Last Updated</label>
-            {{input type="text" value=model.updatedAt readonly=true}}
-          </div>
-
-          <button class="ui positive button right floated" type="submit" {{action 'saveEpisode' model}}>Save</button>
-
-          <button class="ui negative button right floated" type="submit" {{action 'cancelEpisode' model}}>Cancel</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div> --}}

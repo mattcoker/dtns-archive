@@ -137,8 +137,6 @@ export default Ember.Route.extend({
           return pick.save();
         });
 
-        console.log(this.get('removedPicks'));
-
         const disassociatePicks = this.get('removedPicks').map((pick) => {
           pick.set('episode', null);
           return pick.save();

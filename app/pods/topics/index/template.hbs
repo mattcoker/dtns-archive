@@ -5,7 +5,7 @@
 </form>
 
 {{#if settings.topicsShowGrid}}
-  <div class="card-deck" style="margin-top:10px;">
+  <div class="card-deck">
     {{#each model as |topic|}}
       {{topic-card model=topic}}
     {{/each}}

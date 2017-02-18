@@ -24,7 +24,6 @@ export default Ember.Service.extend({
 
   percentageOfNextGoal: Ember.computed('model.totalPledged', 'model.amountToNextGoal', function() {
     const { totalPledged, amountToNextGoal } = this.getProperties('totalPledged', 'amountToNextGoal');
-    console.log(totalPledged / (totalPledged + amountToNextGoal));
     return (totalPledged / (totalPledged + amountToNextGoal)) * 100 ;
   }),
 });

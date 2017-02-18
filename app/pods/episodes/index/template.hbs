@@ -10,11 +10,11 @@
     {{link-to 'Add Episode' 'episodes.new' class="btn btn-success"}}
   {{/if}}
 
-  <p style="margin-left: 10px; display: inline-block;margin-bottom: 0;vertical-align: middle;">
+  <p class="missing-info">
     {{#if settings.episodesShowGrid}}
-      <span class="glyphicon glyphicon-warning-sign" style="background: #ec0; padding: 7px; border-radius: 5px;" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
     {{else}}
-      <span style="border: 1px solid #ddd; width: 40px; height: 25px; background: #fcf8e3; display: inline-block; vertical-align: middle"></span>
+      <span class="color-box"></span>
     {{/if}}
     : May be missing some info
   </p>

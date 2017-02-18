@@ -14,7 +14,6 @@ export default Ember.Route.extend(AuthRedirectMixin, {
       .catch(() => {
         // Model not found, redirect to people list
         this.transitionTo('people.index');
-        // display warning message
       });
   },
 
