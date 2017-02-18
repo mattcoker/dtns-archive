@@ -1,3 +1,4 @@
+// The following styles were backported from Bootstrap 4
 @mixin card-variant($background, $border) {
   background-color: $background;
   border-color: $border;
@@ -232,4 +233,55 @@ $grid-breakpoints: (
       &:not(:last-child) { margin-right: $card-deck-margin; }
     }
   }
+}
+
+// Custom card styles
+.card-deck {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  align-items: stretch;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: 15px;
+}
+
+.card {
+  overflow: hidden;
+  margin: 0 15px 15px;
+  width: calc(100% - 30px);
+
+  img.lazy-image {
+    width: 100%;
+    height: auto;
+  }
+
+  @media only screen and (min-width : 480px) {
+    width: calc(50% - 30px);
+  }
+
+  @media only screen and (min-width : 768px) {
+    // width: calc(33.3% - 1.5em);
+    width: calc(33.3% - 30px);
+  }
+
+  @media only screen and (min-width : 1200px) {
+    // width: calc(25% - 1.5em);
+    width: calc(25% - 30px);
+  }
+}
+
+.has-footer .card-block {
+  margin-bottom: 40px;
+}
+
+.card-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.card-subtitle {
+  margin-top: -5px;
+  margin-bottom: 10px;
 }

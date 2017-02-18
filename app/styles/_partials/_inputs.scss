@@ -1,0 +1,67 @@
+.pika-single {
+  z-index: 1;
+  td:last-child {
+    padding: 0;
+  }
+}
+
+// ember-power-select styles
+li.ember-power-select-multiple-option {
+  padding: 0 8px 0 5px;
+}
+
+input.ember-power-select-trigger-multiple-input {
+  height: 33px !important;
+  margin: 2px 0;
+}
+
+.ember-power-select-option {
+  img {
+    max-width: 25px;
+    border-radius: 5px;
+    padding: 3px 0;
+    margin-left: 3px;
+  }
+  strong {
+    display:inline-block;
+    vertical-align: center;
+  }
+}
+
+
+// Settings page toggle styles
+.x-toggle-component {
+  justify-content: flex-start;
+  .toggle-text {
+    margin-bottom: 0;
+  }
+}
+
+.x-toggle-container {
+  padding: 0;
+  margin: 0 5px;
+}
+
+.x-toggle-light.x-toggle-btn {
+  background-color: #9FD6AE;
+}
+
+.toggle-true {
+  .off-label {
+    color: lightgrey !important;
+  }
+  .on-label {
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+
+.toggle-false {
+  .on-label {
+    color: lightgrey !important;
+  }
+  .off-label {
+    font-weight: bold;
+    font-style: italic;
+  }
+}

@@ -1,0 +1,74 @@
+.d-block {
+  display: block;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.no-hover {
+  pointer-events: none;
+}
+
+.hoverable {
+  cursor: pointer;
+}
+
+.text-align-sm {
+  text-align: center;
+  @media (min-width: 540px) {
+    text-align: initial;
+  }
+}
+
+// First letter indicates m(argin) or p(adding)
+// Second letter indicates direction (top, bottom, left, right)
+// Number indicates multiple of 15px
+// Example: mb-4 translates to "margin-bottom: 60px"
+@for $i from 0 through 6 {
+  .ma-#{$i} {
+    margin: (15 * $i) + px;
+  }
+
+  .mt-#{$i} {
+    margin-top: (15 * $i) + px;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: (15 * $i) + px;
+  }
+
+  .ml-#{$i} {
+    margin-left: (15 * $i) + px;
+  }
+
+  .mr-#{$i} {
+    margin-right: (15 * $i) + px;
+  }
+}
+
+@for $i from 0 through 6 {
+  .pa-#{$i} {
+    padding: (15 * $i) + px;
+  }
+
+  .pt-#{$i} {
+    padding-top: (15 * $i) + px;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: (15 * $i) + px;
+  }
+
+  .pl-#{$i} {
+    padding-left: (15 * $i) + px;
+  }
+
+  .pr-#{$i} {
+    padding-right: (15 * $i) + px;
+  }
+}

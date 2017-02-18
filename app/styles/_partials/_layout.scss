@@ -1,0 +1,24 @@
+.container {
+  @include container-fixed;
+
+  @media (min-width: $screen-sm-min) {
+    max-width: $container-sm;
+    width: 100%;
+  }
+  @media (min-width: $screen-md-min) {
+    max-width: $container-md;
+    width: 100%;
+  }
+  @media (min-width: $screen-lg-min) {
+    max-width: $container-lg;
+    width: 100%;
+  }
+}
+
+#main-content {
+  margin-top: 51px;
+}
+
+.form-inline {
+  margin: 15px 0;
+}

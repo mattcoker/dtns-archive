@@ -1,71 +1,36 @@
+// Bootstrap breakpoints don't quite work for me, so this will tweak sizes so we
+// have more fine-tuned control
 $screen-xs: 480px;
 $screen-sm: 540px;
 $screen-md: 768px;
 $screen-lg: 1024px;
 
+// Custom brand color matches main site accent color
 $brand-primary: darken(#5cb85c, 6.5%);
 
 // Import Ember-Bootstrap styles and variables
 @import "ember-bootstrap/bootstrap";
 @import "ember-bootstrap/bootstrap/variables";
 
+// Import component styles from ember-component-css
+@import "pod-styles";
+
 // Import bootstrap theme for ember-power-select
 @import 'ember-power-select/themes/bootstrap';
 @import "ember-power-select";
 
-// Import card styles from Bootstrap 4
-@import "_partials/_card";
+@import "_partials/_cards";
+@import "_partials/_forms";
+@import "_partials/_inputs";
+@import "_partials/_layout";
+@import "_partials/_navigation";
+@import "_partials/_tables";
+@import "_partials/_utilities";
 
-// Import styles from ember-component-css
-@import "pod-styles";
-
-// Global Styles
-.container {
-  @include container-fixed;
-
-  @media (min-width: $screen-sm-min) {
-    max-width: $container-sm;
-    width: 100%;
-  }
-  @media (min-width: $screen-md-min) {
-    max-width: $container-md;
-    width: 100%;
-  }
-  @media (min-width: $screen-lg-min) {
-    max-width: $container-lg;
-    width: 100%;
-  }
-}
-
-.text-align-sm {
-  text-align: center;
-  @media (min-width: 540px) {
-    text-align: initial;
-  }
-}
-
-#main-content {
-  margin-top: 51px;
-}
-
-.navbar {
-  border-bottom: 0px;
-}
-.navbar-inverse .navbar-brand {
-  color: white !important;
-}
-// nav > .container {
-//   @media (min-width: 540px) and (max-width: 1170px) {
-//     width: 100% !important;
-//   }
-// }
-
-.form-inline {
-  margin: 15px 0;
-}
 
 .label {
   font-size: 85%;
+  line-height: 2;
 }
 
 .list-group-item {
@@ -100,161 +65,36 @@ $brand-primary: darken(#5cb85c, 6.5%);
     padding-left: 15px;
     border-left: 1px solid #ddd
   }
-}
 
-a.active {
-  background-color: $brand-primary !important;
-}
-.hoverable {
-  cursor: pointer;
-}
-
-.highlight-terms {
-  display: inline;
-}
-
-span.highlight {
-  background: rgba(33, 186, 69, 0.15) !important;
-  border-bottom: 2px solid #21BA45;
-  padding: 2px 1px 1px !important;
-}
-
-.social-link span {
-  display: inline-block;
-}
-
-// Custom card styles
-.card-deck {
-  display: flex;
-  justify-content: flex-start;
-  flex-flow: row wrap;
-  align-items: stretch;
-  margin-left: -15px;
-  margin-right: -15px;
-}
-
-.card {
-  overflow: hidden;
-  margin: 0 15px 15px;
-  width: calc(100% - 30px);
-
-  @media only screen and (min-width : 480px) {
-    width: calc(50% - 30px);
-  }
-
-  @media only screen and (min-width : 768px) {
-    // width: calc(33.3% - 1.5em);
-    width: calc(33.3% - 30px);
-  }
-
-  @media only screen and (min-width : 1200px) {
-    // width: calc(25% - 1.5em);
-    width: calc(25% - 30px);
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.pika-single {
-  z-index: 1;
-  td:last-child {
-    padding: 0;
-  }
-}
-
-li.ember-power-select-multiple-option {
-  padding: 0 8px 0 5px;
-}
-
-input.ember-power-select-trigger-multiple-input {
-  height: 33px !important;
-  margin: 2px 0;
-}
-
-.editable-photo {
-  width: 100%;
-}
-.social-link a {
-  color: #337ab7 !important;
-}
-
-.badge.preview {
-  font-size: 30px;
-  border-radius: 50px;
-  padding: 3px 15px;
-}
-
-
-
-
-
-
-.episode-label {
-  display: inline-block;
-}
-
-
-
-.home-page {
-  .list-group-item {
+  .home-page & {
     &:first-child {
       @extend .bg-primary;
       background-color: $brand-primary;
       text-align: center;
     }
-  }
 
-  .field-name {
-    width: 40%;
-    font-weight: bold;
-    font-style: italic;
-    text-align: right;
-    padding-right: 15px;
-  }
+    .field-name, .value {
+      text-align: center;
+    }
 
-  .value {
-    width: 60%;
-    text-align: left;
-    padding-left: 15px;
-    border-left: 1px solid #ddd
+    .field-name {
+      width: 60%;
+    }
+    .value {
+      width: 40%;
+    }
   }
 }
 
-
-
-
-
-
-
+.editable-photo {
+  width: 100%;
+}
 
 .lazy-image-container {
   min-height: auto;
-}
-
-.has-footer .card-block {
-  margin-bottom: 40px;
-}
-
-.card-footer {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-}
-
-.card-subtitle {
-  margin-top: -5px;
-  margin-bottom: 10px;
+  img {
+    width: 100%;
+  }
 }
 
 // Youtube styles
@@ -262,64 +102,6 @@ input.ember-power-select-trigger-multiple-input {
   line-height: 0;
 }
 
-// Toggle styles
-.x-toggle-component {
-  justify-content: flex-start;
-  .toggle-text {
-    margin-bottom: 0;
-  }
-}
-
-.x-toggle-container {
-  padding: 0;
-  margin: 0 5px;
-}
-
-.x-toggle-light.x-toggle-btn {
-  background-color: #9FD6AE;
-}
-
-.toggle-true {
-  .off-label {
-    color: lightgrey !important;
-  }
-  .on-label {
-    font-weight: bold;
-    font-style: italic;
-  }
-}
-
-.toggle-false {
-  .on-label {
-    color: lightgrey !important;
-  }
-  .off-label {
-    font-weight: bold;
-    font-style: italic;
-  }
-}
-
-// Settings styles
-table {
-  text-align: right;
-  tr {
-    line-height: 50px;
-  }
-  td:first-child {
-    width: 300px;
-  }
-  td:last-child{
-    padding-left: 5px;
-  }
-}
-
-
-// Generic styles
-.no-padding {
-  padding: 0 !important;
-}
-
-// Table styles
 .people-labels, .episode-labels {
   .label {
     font-size: 12px;
@@ -327,17 +109,15 @@ table {
   }
 }
 
-.topic-card {
-  border-width: 1px;
-  border-bottom-width: 2px;
-}
 
-tr > * {
-  vertical-align: middle !important;
-}
 
-.card img.lazy-image {
+.edit-photo {
+  background: #eeeeee;
+  text-align: center;
   width: 100%;
-  height: auto;
+  padding: 5px;
+  border-radius: 0 0 5px 5px;
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: #ddd;
 }
-

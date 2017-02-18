@@ -1,0 +1,11 @@
+.navbar {
+  border-bottom: 0px;
+}
+
+.navbar-inverse .navbar-brand {
+  color: white !important;
+}
+
+a.active {
+  background-color: $brand-primary !important;
+}

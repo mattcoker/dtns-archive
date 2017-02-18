@@ -1,0 +1,19 @@
+.missing-info {
+  margin-left: 10px;
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+  .glyphicon {
+    background: #ec0;
+    padding: 7px;
+    border-radius: 5px;
+  }
+  .color-box {
+    border: 1px solid #ddd;
+    width: 40px;
+    height: 25px;
+    background: #fcf8e3;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
