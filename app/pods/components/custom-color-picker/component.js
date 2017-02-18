@@ -10,8 +10,8 @@ export default SpectrumColorPickerComponent.extend({
   clickoutFiresChange: true,
 
   palette: [
-    ['#001f3f','#0074D9','#7FDBFF','#39CCCC','#3D9970'],
-    ['#2ECC40','#01FF70','#FFDC00','#FF851B','#FF4136'],
-    ['#F012BE','#B10DC9','#111111','#AAAAAA','#DDDDDD']
+    ['#282940', '#5CA57D', '#F06153', '#F0AE2C', '#1B5A7A'],
+    ['#9869AA', '#7ACFE6', '#7e7d79', '#FCFBE4', '#9D3978'],
+    ['#FFABE5', '#379956', '#8C0909', '#F73859', '#F7D098']
   ]
 });
