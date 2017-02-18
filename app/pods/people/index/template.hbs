@@ -1,10 +1,11 @@
 <form class="form-inline">
   {{input type="text" value=filterTerm placeholder="Search..." classNames="form-control"}}
-  <select class="form-control">
+
+  {{#x-select classNames='form-control' action='updateFilterField' value=filterField as |xs|}}
     {{#each filterFields as |field|}}
-      <option value="{{field.value}}">{{field.label}}</option>
+      {{#xs.option value=field.value}}{{field.label}}{{/xs.option}}
     {{/each}}
-  </select>
+  {{/x-select}}
 
   {{#if session.isAuthenticated}}
     {{link-to 'Add Person' 'people.new' class="btn btn-success"}}
@@ -14,7 +15,11 @@
 {{#if settings.peopleShowGrid}}
   <div class="card-deck">
     {{#each filteredPeople as |person|}}
-      {{person-card person=person}}
+      {{person-card
+        person=person
+        filterTerm=filterTerm
+        filterField=filterField
+      }}
     {{/each}}
   </div>
 {{else}}
