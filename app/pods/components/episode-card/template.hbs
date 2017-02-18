@@ -57,10 +57,5 @@
 {{/link-to}}
 
 <div class="card-footer">
-  Topics:
-  {{#each episode.topics as |topic|}}
-    {{topic-label model=topic}}
-  {{else}}
-    <span class="text-muted">none</span>
-  {{/each}}
+  Topics: {{topic-link-collection topics=episode.topics}}
 </div>
