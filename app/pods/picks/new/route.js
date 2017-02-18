@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import AuthRedirectMixin from '../../../mixins/auth-redirect';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(AuthRedirectMixin, {
   titleToken: 'Add New Pick',
 
   model() {
