@@ -28,9 +28,8 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    itemClick(item) {
-      const modelName = item.constructor.modelName;
-      this.transitionToRoute(modelName, item);
-    }
+    updateFilterField(arg) {
+      this.set('filterField', arg);
+    },
   }
 });

@@ -9,5 +9,12 @@ export default DS.Model.extend({
   showNotesText: DS.attr('string'),
   episode: belongsTo('episode', { async: true, inverse: null }),
   createdAt: DS.attr('date', { defaultValue() { return new Date(); } }),
-  updatedAt: DS.attr('date', { defaultValue() { return new Date(); } })
+  updatedAt: DS.attr('date', { defaultValue() { return new Date(); } }),
+
+  allText: Ember.computed('name', 'category', 'description', function() {
+    const name = this.get('name');
+    const category = this.get('category');
+    const description = this.get('description');
+    return `${name}|${category}|${description}`;
+  })
 });

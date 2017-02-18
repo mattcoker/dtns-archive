@@ -1,8 +1,20 @@
 {{#link-to 'topic.index' model.slug tagName='div' classNames='card-block'}}
   <h4 class="card-title">
-    {{model.name}}
+    {{#highlight-filter
+      fieldName='name'
+      filterTerm=filterTerm
+      filterField=filterField
+    }}
+      {{model.name}}
+    {{/highlight-filter}}
   </h4>
   <div class="card-text">
-    {{{truncate model.description 140}}}
+    {{#highlight-filter
+      fieldName='description'
+      filterTerm=filterTerm
+      filterField=filterField
+    }}
+      {{{truncate model.description 140}}}
+    {{/highlight-filter}}
   </div>
 {{/link-to}}

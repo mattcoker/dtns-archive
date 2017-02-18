@@ -11,15 +11,33 @@
 
 {{#link-to 'person.index' person tagName='div' classNames='card-block'}}
   <h4 class="card-title">
-    {{person.fullName}}
+    {{#highlight-filter
+      fieldName='fullName'
+      filterTerm=filterTerm
+      filterField=filterField
+    }}
+      {{person.fullName}}
+    {{/highlight-filter}}
   </h4>
 
   <h6 class="card-subtitle text-muted">
-    {{person.title}}
+    {{#highlight-filter
+      fieldName='title'
+      filterTerm=filterTerm
+      filterField=filterField
+    }}
+      {{person.title}}
+    {{/highlight-filter}}
   </h6>
 
   <div class="card-text mb-2">
-    {{{truncate person.description 140}}}
+    {{#highlight-filter
+      fieldName='description'
+      filterTerm=filterTerm
+      filterField=filterField
+    }}
+      {{{truncate person.description 140}}}
+    {{/highlight-filter}}
   </div>
 {{/link-to}}
 
