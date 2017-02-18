@@ -19,5 +19,11 @@ export default DS.Model.extend({
     const b = parseInt(backgroundColor.substr(5,2),16);
     const yiq = ((r*299)+(g*587)+(b*114))/1000;
     return (yiq >= 140) ? '#000000' : '#FFFFFF';
+  }),
+
+  allText: Ember.computed('name', 'description', function() {
+    const name = this.get('name');
+    const description = this.get('description');
+    return `${name}|${description}`;
   })
 });
