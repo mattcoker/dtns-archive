@@ -1,8 +1,30 @@
 {{#link-to 'pick.index' model.id tagName='div' classNames='card-block'}}
   <h4 class="card-title">
-    {{model.name}}
+    {{#highlight-filter
+      fieldName='name'
+      filterTerm=filterTerm
+      filterField=filterField
+    }}
+      {{model.name}}
+    {{/highlight-filter}}
   </h4>
+
+  <h6 class="card-subtitle text-muted">
+    {{#highlight-filter
+      fieldName='category'
+      filterTerm=filterTerm
+      filterField=filterField
+    }}
+      {{model.category}}
+    {{/highlight-filter}}
+  </h6>
   <div class="card-text mb-2">
-    {{{truncate model.description 100}}}
+    {{#highlight-filter
+      fieldName='description'
+      filterTerm=filterTerm
+      filterField=filterField
+    }}
+      {{{truncate model.description 100}}}
+    {{/highlight-filter}}
   </div>
 {{/link-to}}
