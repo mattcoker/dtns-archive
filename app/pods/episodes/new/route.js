@@ -35,7 +35,17 @@ export default Ember.Route.extend(AuthRedirectMixin, {
           return person.save();
         });
 
-        return Ember.RSVP.all(addHosts, addContributors, addGuests);
+        const addTopics = this.get('currentTopics').map((topic) => {
+          topic.get('episodes').pushObject(episode);
+          return topic.save();
+        });
+
+        const addPicks = this.get('currentPicks').map((pick) => {
+          pick.set('episode', episode);
+          return pick.save();
+        });
+
+        return Ember.RSVP.all(addHosts, addContributors, addGuests, addTopics, addPicks);
       }).then(() => {
         this.transitionTo('episodes.index');
       }).catch((err) => {
