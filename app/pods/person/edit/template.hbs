@@ -34,12 +34,7 @@
       {{form.element controlType="text" label="First Name" property="firstName"}}
       {{form.element controlType="text" label="Last Name" property="lastName"}}
       {{form.element controlType="text" label="Title/Role" property="title"}}
-      {{#form.element label="Twitter Handle" property="twitterHandle" as |el|}}
-        <div class="input-group">
-          <span class="input-group-addon">@</span>
-          <input value={{el.value}} class="form-control" oninput={{action (mut el.value) value="target.value"}} onchange={{action (mut el.value) value="target.value"}} type="text">
-        </div>
-      {{/form.element}}
+      {{form.element controlType="text" label="Twitter handle" property="twitterHandle"}}
       {{form.element controlType="textarea" label="Description" property="description" rows=5}}
       {{form.element controlType="text" readonly=true label="Date Created" property="createdAt"}}
       {{form.element controlType="text" readonly=true label="Date Updated" property="updatedAt"}}

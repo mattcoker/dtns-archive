@@ -26,6 +26,11 @@
       </li>
 
       <li class="list-group-item">
+        <div class="field-name">Description</div>
+        <div class="value {{unless model.description 'text-muted'}}">{{{model.description}}}</div>
+      </li>
+
+      <li class="list-group-item">
         <div class="field-name">Show Notes</div>
         <div class="value {{unless model.showNotesURL 'text-muted'}}">{{showNotesLink}}</div>
       </li>
