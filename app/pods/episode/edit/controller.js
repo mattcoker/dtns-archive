@@ -3,13 +3,15 @@ import getYoutubeId from 'npm:get-youtube-id';
 
 export default Ember.Controller.extend({
   currDate: new Date(),
+  maxNumberOfTopics: 3,
 
   playerVars: {
     autoplay: 0,
     showinfo: 0,
     controls: 1,
     fs: 1,
-    modestbranding: 1
+    modestbranding: 1,
+    iv_load_policy: 3
   },
 
   hosts:        Ember.computed.alias('model.hosts'),
@@ -53,6 +55,14 @@ export default Ember.Controller.extend({
   actions: {
     updateAirDate(newAirDate) {
       this.set('model.airDate', newAirDate);
+    },
+
+    updateUnlessFull(newOpts) {
+      const maxNumberOfTopics = this.get('maxNumberOfTopics');
+      const topics = this.get('model.topics');
+      if (topics.get('length') < maxNumberOfTopics || newOpts.length <= topics.get('length')) {
+        this.set('model.topics', newOpts);
+      }
     }
   }
 });

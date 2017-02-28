@@ -7,9 +7,10 @@
     {{/each}}
   {{/x-select}}
 
-  {{#if session.isAuthenticated}}
+  {{!-- Disable episode creation for now --}}
+  {{!-- {{#if session.isAuthenticated}}
     {{link-to 'Add Episode' 'episodes.new' class="btn btn-success"}}
-  {{/if}}
+  {{/if}} --}}
 
   <p class="missing-info">
     {{#if settings.episodesShowGrid}}
