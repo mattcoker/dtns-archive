@@ -12,7 +12,8 @@ export default Ember.Component.extend({
     showinfo: 0,
     controls: 0,
     fs: 0,
-    modestbranding: 1
+    modestbranding: 1,
+    iv_load_policy: 3
   },
 
   actions: {

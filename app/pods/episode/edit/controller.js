@@ -9,7 +9,8 @@ export default Ember.Controller.extend({
     showinfo: 0,
     controls: 1,
     fs: 1,
-    modestbranding: 1
+    modestbranding: 1,
+    iv_load_policy: 3
   },
 
   hosts:        Ember.computed.alias('model.hosts'),

@@ -7,7 +7,8 @@ export default Ember.Controller.extend(DateTimeFormatMixin, {
     showinfo: 0,
     controls: 1,
     fs: 1,
-    modestbranding: 1
+    modestbranding: 1,
+    iv_load_policy: 3
   },
 
   hasDownloadURL: Ember.computed.bool('model.downloadURL'),
