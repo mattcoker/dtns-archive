@@ -3,6 +3,7 @@ import getYoutubeId from 'npm:get-youtube-id';
 
 export default Ember.Controller.extend({
   currDate: new Date(),
+  maxNumberOfTopics: 3,
 
   playerVars: {
     autoplay: 0,
@@ -54,6 +55,14 @@ export default Ember.Controller.extend({
   actions: {
     updateAirDate(newAirDate) {
       this.set('model.airDate', newAirDate);
+    },
+
+    updateUnlessFull(newOpts) {
+      const maxNumberOfTopics = this.get('maxNumberOfTopics');
+      const topics = this.get('model.topics');
+      if (topics.get('length') < maxNumberOfTopics || newOpts.length <= topics.get('length')) {
+        this.set('model.topics', newOpts);
+      }
     }
   }
 });

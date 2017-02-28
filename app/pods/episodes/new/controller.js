@@ -3,6 +3,7 @@ import getYoutubeId from 'npm:get-youtube-id';
 
 export default Ember.Controller.extend({
   currDate: new Date(),
+  maxNumberOfTopics: 3,
 
   playerVars: {
     autoplay: 0,
@@ -13,9 +14,9 @@ export default Ember.Controller.extend({
     iv_load_policy: 3
   },
 
-  hosts:        Ember.computed.alias('episode.hosts'),
-  contributors: Ember.computed.alias('episode.contributors'),
-  guests:       Ember.computed.alias('episode.guests'),
+  hosts:        Ember.computed.alias('model.hosts'),
+  contributors: Ember.computed.alias('model.contributors'),
+  guests:       Ember.computed.alias('model.guests'),
 
   possibleHosts: Ember.computed('contributors.@each', 'guests.@each', 'people.@each', function() {
     const currContributors = this.get('contributors');
@@ -44,16 +45,16 @@ export default Ember.Controller.extend({
     });
   }),
 
-  parseYoutubeURL: Ember.observer('episode.youtubeId', function() {
-    let youtubeValue = this.get('episode.youtubeId');
+  parseYoutubeURL: Ember.observer('model.youtubeId', function() {
+    let youtubeValue = this.get('model.youtubeId');
     if (youtubeValue && youtubeValue.indexOf('youtu') > -1) {
-      this.set('episode.youtubeId', getYoutubeId(youtubeValue));
+      this.set('model.youtubeId', getYoutubeId(youtubeValue));
     }
   }),
 
   actions: {
     updateAirDate(newAirDate) {
-      this.set('episode.airDate', newAirDate);
+      this.set('model.airDate', newAirDate);
     },
 
     parseYoutubeURL(val) {
@@ -61,8 +62,16 @@ export default Ember.Controller.extend({
       if (params) {
         const ampersandPosition = params.indexOf('&');
         if(ampersandPosition !== -1) {
-          this.set('episode.youtubeId', params.substring(0, ampersandPosition));
+          this.set('model.youtubeId', params.substring(0, ampersandPosition));
         }
+      }
+    },
+
+    updateUnlessFull(newOpts) {
+      const maxNumberOfTopics = this.get('maxNumberOfTopics');
+      const topics = this.get('model.topics');
+      if (topics.get('length') < maxNumberOfTopics || newOpts.length <= topics.get('length')) {
+        this.set('model.topics', newOpts);
       }
     }
   }

@@ -5,16 +5,24 @@ export default Ember.Route.extend(AuthRedirectMixin, {
   titleToken: 'Add New Episode',
 
   model() {
+    const store = this.get('store');
+
     return Ember.RSVP.hash({
-      episode: this.get('store').createRecord('episode', {}),
-      people: this.get('store').query('person', { orderBy: 'lastName' })
+      episode: store.createRecord('episode', {}),
+      people: store.findAll('person'),
+      topics: store.findAll('topic'),
+      picks: store.findAll('pick')
     });
   },
 
   setupController(controller, models) {
     this._super(...arguments);
-    controller.set('episode', models.episode);
-    controller.set('people', models.people);
+    controller.setProperties({
+      model: models.episode,
+      people: models.people,
+      topics: models.topics,
+      picks: models.picks
+    });
   },
 
   actions: {

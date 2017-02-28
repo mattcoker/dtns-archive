@@ -66,12 +66,13 @@
           <strong>{{pick.name}}</strong>
         {{/power-select-multiple}}
       {{/form.element}}
-      {{#form.element label="Topics" property="topics" as |el|}}
+      {{#form.element label="Topics (max of 3)" property="topics" as |el|}}
         {{#power-select-multiple
           options=topics
+          closeOnSelect=false
           searchField="name"
           selected=model.topics
-          onchange=(action (mut model.topics))
+          onchange=(action 'updateUnlessFull')
           as |topic|
         }}
           <strong>{{topic.name}}</strong>

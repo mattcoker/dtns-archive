@@ -69,9 +69,10 @@
       {{#form.element label="Topics" property="topics" as |el|}}
         {{#power-select-multiple
           options=topics
+          closeOnSelect=false
           searchField="name"
-          selected=episode.topics
-          onchange=(action (mut episode.topics))
+          selected=model.topics
+          onchange=(action 'updateUnlessFull')
           as |topic|
         }}
           <strong>{{topic.name}}</strong>
