@@ -12,7 +12,8 @@ Router.map(function() {
 
   // Episode model routes
   this.route('episodes', function() {
-    this.route('new');
+    // Temporarily disable episode creation
+    // this.route('new');
   });
 
   this.route('episode', { path: '/episode/:episode_id' }, function() {
@@ -39,7 +40,8 @@ Router.map(function() {
 
   // Pick model routes
   this.route('picks', function() {
-    this.route('new');
+    // Temporarily disable pick creation
+    // this.route('new');
   });
 
   this.route('pick', { path: '/pick/:pick_id' }, function() {

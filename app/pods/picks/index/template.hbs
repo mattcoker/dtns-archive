@@ -7,9 +7,10 @@
     {{/each}}
   {{/x-select}}
 
-  {{#if session.isAuthenticated}}
+  {{!-- Disable pick creation for now --}}
+  {{!-- {{#if session.isAuthenticated}}
     {{link-to 'Add Pick' 'picks.new' class="btn btn-success"}}
-  {{/if}}
+  {{/if}} --}}
 </form>
 
 {{#if settings.picksShowGrid}}
