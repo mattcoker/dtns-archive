@@ -4,7 +4,7 @@ import { storageFor } from 'ember-local-storage';
 export default Ember.Controller.extend({
   settings: storageFor('settings'),
 
-  myPlayerVars: {
+  playerVars: {
     autoplay: 0,
     showinfo: 0,
     controls: 0,
