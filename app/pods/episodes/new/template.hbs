@@ -14,6 +14,7 @@
   </div>
 
   {{#bs-form formLayout='horizontal' model=episode classNames='col-xs-12 col-sm-6 col-sm-pull-6' as |form|}}
+      {{form.element controlType="text" label="Episode Number" property="episodeNumber"}}
       {{form.element controlType="text" label="Episode Name" property="episodeName"}}
       {{form.element controlType="textarea" label="Description" property="description" rows=5}}
       {{form.element controlType="text" label="Show Notes URL" property="showNotesURL" rows=5}}
@@ -54,7 +55,7 @@
           <strong>{{person.fullName}}</strong>
         {{/power-select-multiple}}
       {{/form.element}}
-            {{#form.element label="Picks" property="picks" as |el|}}
+      {{#form.element label="Picks" property="picks" as |el|}}
         {{#power-select-multiple
           options=picks
           searchField="name"

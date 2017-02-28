@@ -89,14 +89,17 @@
       {{/form.element}}
       {{form.element controlType="text" readonly=true label="Date Created" property="createdAt"}}
       {{form.element controlType="text" readonly=true label="Date Updated" property="updatedAt"}}
-      {{form.element controlType="checkbox" label="Requires Review" property="requiresReview"}}
       <div class="form-group">
         <div class="col-md-8 col-md-push-4">
-          <div class="alert alert-danger">
+          <div class="alert alert-danger mb-0">
             Only turn off "Requires Review" if you are sure that the data for this episode is complete.
+            <br><br>
+            When in doubt, leave this box checked.
           </div>
         </div>
       </div>
+      {{form.element controlType="checkbox" label="Requires Review" property="requiresReview"}}
+
       <div class="text-center">
         <button class="btn btn-primary" type="submit" {{action 'saveEpisode' model}}>Save</button>
         <button class="btn btn-danger" type="submit" {{action 'cancelEpisode' model}}>Cancel</button>
