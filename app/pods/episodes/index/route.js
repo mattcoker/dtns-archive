@@ -4,10 +4,7 @@ export default Ember.Route.extend({
   titleToken: 'Episodes',
 
   model() {
-    const store = this.get('store');
-    return store.findAll('person').then(() => {
-      return store.query('episode', { orderBy: 'episodeNumber' });
-    });
+    return this.get('store').query('episode', { orderBy: 'episodeNumber' });
   },
 
   setupController(controller, model) {
