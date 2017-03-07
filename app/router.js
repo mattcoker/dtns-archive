@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import RouterScroll from 'ember-router-scroll';
-import config from './config/environment';
 
 const Router = Ember.Router.extend(RouterScroll, {
   location: 'router-scroll',

@@ -37,7 +37,7 @@ export default Ember.Controller.extend({
             errorMessage = 'The user account for the email/password combination you provided has been disabled. If you believe this is in error, please contact the developer of this application.';
             break;
           default:
-            errorMessage = 'The provided email/password combination was not valid. Please try again.'
+            errorMessage = 'The provided email/password combination was not valid. Please try again.';
         }
         this.set('errorMessage', errorMessage);
       });

@@ -2,11 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   actions: {
-    saveTopic(model) {
+    saveTopic() {
       return true;
     },
 
-    cancelTopic(model) {
+    cancelTopic() {
       return true;
     }
   }
