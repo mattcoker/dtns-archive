@@ -27,7 +27,6 @@
           onchange=(action (mut model.hosts))
           as |person|
         }}
-          <img src="{{if person.photo person.photo}}"/>
           <strong>{{person.fullName}}</strong>
         {{/power-select-multiple}}
       {{/form.element}}
@@ -39,7 +38,6 @@
           onchange=(action (mut model.contributors))
           as |person|
         }}
-          <img src="{{if person.photo person.photo}}" />
           <strong>{{person.fullName}}</strong>
         {{/power-select-multiple}}
       {{/form.element}}
@@ -51,7 +49,6 @@
           onchange=(action (mut model.guests))
           as |person|
         }}
-          <img src="{{if person.photo person.photo}}"/>
           <strong>{{person.fullName}}</strong>
         {{/power-select-multiple}}
       {{/form.element}}
