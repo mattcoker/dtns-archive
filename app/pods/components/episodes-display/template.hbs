@@ -8,10 +8,15 @@
       }}
     {{/each}}
   </div>
+
+  {{content-trigger reachedEnd=reachedEnd updateContent=(action 'updateContent')}}
+
 {{else}}
   {{episodes-table
     episodes=episodes
     filterTerm=filterTerm
     filterField=filterField
   }}
+
+  {{content-trigger reachedEnd=reachedEnd updateContent=(action 'updateContent')}}
 {{/if}}
