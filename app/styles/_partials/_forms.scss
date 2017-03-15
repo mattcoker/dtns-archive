@@ -1,3 +1,9 @@
+.form-inline:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
 .missing-info {
   margin-left: 10px;
   display: inline-block;

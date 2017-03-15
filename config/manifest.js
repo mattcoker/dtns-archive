@@ -11,8 +11,8 @@ module.exports = function(/* environment, appConfig */) {
     description: "Your Dedicated Repository for DTNS episodes, people, picks, and topics.",
     start_url: "/",
     display: "standalone",
-    background_color: "#4aa94a",
-    theme_color: "#4aa94a",
+    background_color: "#000",
+    theme_color: "#000",
     icons: [
     ]
   };
