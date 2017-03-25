@@ -41,15 +41,17 @@
   </div>
 {{/link-to}}
 
-<div class="card-footer">
-  {{#social-link type='twitter' identifier=person.twitterHandle}}
-    <i class="fa fa-twitter" aria-hidden="true"></i>
-    @{{#highlight-filter
-      fieldName='twitterHandle'
-      filterTerm=filterTerm
-      filterField=filterField
-    }}
-      {{person.twitterHandle}}
-    {{/highlight-filter}}
-  {{/social-link}}
-</div>
+{{#if person.twitterHandle}}
+  <div class="card-footer">
+    {{#social-link type='twitter' identifier=person.twitterHandle}}
+      <i class="fa fa-twitter" aria-hidden="true"></i>
+      @{{#highlight-filter
+        fieldName='twitterHandle'
+        filterTerm=filterTerm
+        filterField=filterField
+      }}
+        {{person.twitterHandle}}
+      {{/highlight-filter}}
+    {{/social-link}}
+  </div>
+{{/if}}

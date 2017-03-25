@@ -1,5 +1,5 @@
 {{#each picks as |pick|}}
-  {{link-to pick.name 'pick.index' pick.id tagName='a' classNames='label label-default'}}
+  {{link-to (truncate pick.name 30) 'pick.index' pick.id tagName='a' classNames='label label-default'}}
 {{else}}
   <span class="text-muted">none</span>
 {{/each}}
