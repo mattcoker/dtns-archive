@@ -40,3 +40,13 @@
   display: table;
   clear: both;
 }
+
+.original-label, .cropped-label {
+  line-height: 1.5;
+  font-size: 14px;
+  text-align: center;
+}
+
+.original-label {
+  margin-bottom: 10px;
+}
