@@ -9,6 +9,7 @@
     "blob-polyfill": "^1.0.20150320",
     "jquery-highlight": "~3.2.2",
     "spectrum": "^1.8.0",
-    "font-awesome": "~4.5.0"
+    "font-awesome": "~4.5.0",
+    "cropper": "^2.3.4"
   }
 }

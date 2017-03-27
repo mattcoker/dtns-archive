@@ -22,3 +22,31 @@
 .form-inline {
   margin: 15px 0;
 }
+
+.modal-lg {
+  @media (min-width: 540px) {
+    width: 540px;
+  }
+  @media (min-width: 768px) {
+    width: 768px;
+  }
+  @media (min-width: 900px) {
+    width: 900px;
+  }
+}
+
+.modal-body:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.original-label, .cropped-label {
+  line-height: 1.5;
+  font-size: 14px;
+  text-align: center;
+}
+
+.original-label {
+  margin-bottom: 10px;
+}
