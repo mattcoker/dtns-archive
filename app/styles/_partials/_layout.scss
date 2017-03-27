@@ -22,3 +22,21 @@
 .form-inline {
   margin: 15px 0;
 }
+
+.modal-lg {
+  @media (min-width: 540px) {
+    width: 540px;
+  }
+  @media (min-width: 768px) {
+    width: 768px;
+  }
+  @media (min-width: 900px) {
+    width: 900px;
+  }
+}
+
+.modal-body:after {
+  content: '';
+  display: table;
+  clear: both;
+}
