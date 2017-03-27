@@ -41,8 +41,21 @@ export default Ember.Controller.extend({
           });
 
           this.set('model.photo', uploadTask.snapshot.downloadURL);
+
+          this.setProperties({
+            isUploading: false,
+            fileProgress: 0,
+            useExistingPhoto: true
+          });
         });
       }
+    },
+
+    closePhotoEditModal() {
+      this.setProperties({
+        useExistingPhoto: false,
+        showPhotoEditModal: false
+      });
     }
   }
 });
