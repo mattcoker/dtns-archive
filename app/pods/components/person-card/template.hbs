@@ -3,10 +3,7 @@
 {{/if}}
 
 {{#link-to 'person' person tagName='div' classNames='card-img-top'}}
-  {{lazy-image
-    url=(if person.photo person.photo '/assets/images/default-image.png')
-    alt=(concat 'Photo for ' person.fullName)
-  }}
+  <img src="{{person.photo}}" alt="{{concat 'Photo for ' person.fullName}}"/>
 {{/link-to}}
 
 {{#link-to 'person.index' person tagName='div' classNames='card-block'}}

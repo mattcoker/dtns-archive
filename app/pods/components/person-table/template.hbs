@@ -14,7 +14,8 @@
       {{#each people as |person|}}
         <tr>
           <td class="text-center">
-            {{lazy-image url=(if person.photo person.photo '/assets/images/default-image.png') alt=(concat 'Photo for ' person.fullName) width=50 height=50 }}
+            <img src="{{if person.photo person.photo '/assets/images/default-image.png'}}" alt="{{concat 'Photo for ' person.fullName}}" width='80'/>
+            {{!-- {{lazy-image url=(if person.photo person.photo '/assets/images/default-image.png') alt=(concat 'Photo for ' person.fullName) width=50 height=50 }} --}}
           </td>
 
           <td class="text-center">
