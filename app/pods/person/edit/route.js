@@ -3,7 +3,7 @@ import AuthRedirectMixin from '../../../mixins/auth-redirect';
 
 export default Ember.Route.extend(AuthRedirectMixin, {
 
-  titleToken: Ember.computed('model.fullName', function() {
+  titleToken: Ember.computed('controller.model.fullName', function() {
     return `Editing ${this.controller.get('model.fullName')}`;
   }),
 
