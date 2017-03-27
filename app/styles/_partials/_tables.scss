@@ -14,3 +14,24 @@ table {
     padding-left: 5px;
   }
 }
+
+@media (max-width: 425px) {
+  #local-settings {
+    width: 100%;
+    tr, td {
+      width: 100%;
+      display: block;
+      padding: 0 !important;
+      text-align: center;
+    }
+    td > * {
+      display: inline-block;
+    }
+    td:first-child {
+      margin-bottom: -20px;
+    }
+    select {
+      width: auto;
+    }
+  }
+}
