@@ -63,6 +63,28 @@ export default Ember.Controller.extend({
       if (topics.get('length') < maxNumberOfTopics || newOpts.length <= topics.get('length')) {
         this.set('model.topics', newOpts);
       }
+    },
+
+    createPerson(property, fullName) {
+      const firstName = fullName.substr(0, fullName.indexOf(' '));
+      const lastName = fullName.substr(fullName.indexOf(' ') + 1);
+
+      const newPerson = this.store.createRecord('person', {
+        firstName: firstName,
+        lastName: lastName
+      });
+
+      this.get(property).pushObject(newPerson);
+    },
+
+    createPick(name) {
+      const newPick = this.store.createRecord('pick', { name: name });
+      this.get('model.picks').pushObject(newPick);
+    },
+
+    createTopic(name) {
+      const newTopic = this.store.createRecord('topic', { name: name });
+      this.get('model.topics').pushObject(newTopic);
     }
   }
 });

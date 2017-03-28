@@ -20,37 +20,40 @@
       {{form.element controlType="text" label="Show Notes URL" property="showNotesURL" rows=5}}
       {{form.element controlType="text" label="Youtube URL or ID" property="youtubeId" rows=5}}
       {{#form.element label="Hosts" property="hosts" as |el|}}
-        {{#power-select-multiple
+        {{#power-select-with-create
           options=possibleHosts
-          searchField="fullName"
+          searchField='fullName'
           selected=model.hosts
+          multiple=true
           onchange=(action (mut model.hosts))
-          as |person|
+          oncreate=(action "createPerson" 'hosts') as |person|
         }}
           <strong>{{person.fullName}}</strong>
-        {{/power-select-multiple}}
+        {{/power-select-with-create}}
       {{/form.element}}
       {{#form.element label="Contributors" property="contributors" as |el|}}
-        {{#power-select-multiple
+        {{#power-select-with-create
           options=possibleContributors
-          searchField="fullName"
+          searchField='fullName'
           selected=model.contributors
+          multiple=true
           onchange=(action (mut model.contributors))
-          as |person|
+          oncreate=(action "createPerson" 'contributors') as |person|
         }}
           <strong>{{person.fullName}}</strong>
-        {{/power-select-multiple}}
+        {{/power-select-with-create}}
       {{/form.element}}
       {{#form.element label="Guests" property="guests" as |el|}}
-        {{#power-select-multiple
+        {{#power-select-with-create
           options=possibleGuests
-          searchField="fullName"
+          searchField='fullName'
           selected=model.guests
+          multiple=true
           onchange=(action (mut model.guests))
-          as |person|
+          oncreate=(action "createPerson" 'guests') as |person|
         }}
           <strong>{{person.fullName}}</strong>
-        {{/power-select-multiple}}
+        {{/power-select-with-create}}
       {{/form.element}}
       {{#form.element label="Picks" property="picks" as |el|}}
         {{#power-select-multiple
@@ -66,10 +69,9 @@
       {{#form.element label="Topics (max of 3)" property="topics" as |el|}}
         {{#power-select-multiple
           options=topics
-          closeOnSelect=false
           searchField="name"
           selected=model.topics
-          onchange=(action 'updateUnlessFull')
+          onchange=(action (mut model.topics))
           as |topic|
         }}
           <strong>{{topic.name}}</strong>
