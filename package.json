@@ -76,7 +76,7 @@
     "ember-web-app": "1.1.0",
     "ember-web-app-rename": "1.0.0",
     "ember-youtube": "0.8.0-beta.0",
-    "emberfire": "2.0.4",
+    "emberfire": "2.0.6",
     "emberx-file-input": "1.1.0",
     "emberx-select": "3.0.0",
     "firebase-admin": "^4.0.4",
