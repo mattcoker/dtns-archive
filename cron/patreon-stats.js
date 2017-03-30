@@ -1,6 +1,6 @@
 'use strict';
 
-require('dotenv').config();
+require('dotenv').config({silent: true});
 const fs = require('fs');
 const firebaseAdmin = require('firebase-admin');
 const request = require('request');

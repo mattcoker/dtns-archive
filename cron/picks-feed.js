@@ -1,6 +1,6 @@
 'use strict';
 
-require('dotenv').config();
+require('dotenv').config({silent: true});
 const util = require('util');
 const request = require('request');
 const BPromise = require("bluebird");
