@@ -26,9 +26,31 @@ export default Ember.Controller.extend({
     });
   }),
 
+  updateFilterFieldFn: function(filterField) {
+    this.set('showLoadingState', false);
+    this.set('filterField', filterField);
+  },
+
+  updateFilterTermFn: function(filterTerm) {
+    this.set('showLoadingState', false);
+    this.set('filterTerm', filterTerm);
+  },
+
   actions: {
     updateFilterField(arg) {
-      this.set('filterField', arg);
+      this.set('showLoadingState', true);
+      Ember.run.debounce(this, this.updateFilterFieldFn, arg,  500);
     },
+
+    updateFilterTerm(arg) {
+      this.set('showLoadingState', true);
+      Ember.run.debounce(this, this.updateFilterTermFn, arg,  500);
+    }
   }
+
+  // actions: {
+  //   updateFilterField(arg) {
+  //     this.set('filterField', arg);
+  //   },
+  // }
 });
