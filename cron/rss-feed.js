@@ -1,6 +1,6 @@
 'use strict';
 
-require('dotenv').config();
+require('dotenv').config({silent: true});
 const request = require('request');
 const parser = require('xml2json');
 const firebaseAdmin = require('firebase-admin');

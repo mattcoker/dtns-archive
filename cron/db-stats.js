@@ -1,6 +1,6 @@
 'use strict';
 
-require('dotenv').config();
+require('dotenv').config({silent: true});
 const firebaseAdmin = require('firebase-admin');
 const BP = require('bluebird');
 const serviceAccountJSON = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
