@@ -2,8 +2,24 @@ import Ember from 'ember';
 import RouterScroll from 'ember-router-scroll';
 
 const Router = Ember.Router.extend(RouterScroll, {
+  metrics: Ember.inject.service(),
+
   location: 'router-scroll',
-  historySupportMiddleware: true
+  historySupportMiddleware: true,
+
+  didTransition() {
+    this._super(...arguments);
+    this._trackPage();
+  },
+
+  _trackPage() {
+    Ember.run.scheduleOnce('afterRender', this, () => {
+      const page = this.get('url');
+      const title = this.getWithDefault('currentRouteName', 'unknown');
+
+      Ember.get(this, 'metrics').trackPage({ page, title });
+    });
+  }
 });
 
 Router.map(function() {
