@@ -176,3 +176,10 @@ $brand-primary: darken(#5cb85c, 6.5%);
     -webkit-transform: scaleY(1.0);
   }
 }
+
+a.card-block {
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+
