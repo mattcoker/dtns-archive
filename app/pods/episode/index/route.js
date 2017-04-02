@@ -10,5 +10,28 @@ export default Ember.Route.extend({
 
   afterModel(model) {
     this.set('titleToken', model.get('displayName'));
+  },
+
+  headTags: function() {
+    let model = this.modelFor(this.routeName);
+    return [
+      {
+        type: 'meta',
+        tagId: 'meta-description-tag',
+        attrs: {
+          name: 'description',
+          content: `Viewing details for DTNS episode #${model.get('displayName')}. ${model.get('description')}`,
+          encoding: 'UTF-8'
+        }
+      }, {
+        type: 'meta',
+        tagId: 'meta-keywords-tag',
+        attrs: {
+          name: 'keywords',
+          content: `dtns, archive, daily tech news show, episode, #${model.get('displayName')}`,
+          encoding: 'UTF-8'
+        }
+      }
+    ];
   }
 });

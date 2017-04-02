@@ -43,6 +43,7 @@
     "ember-cli-image-cropper": "0.0.11",
     "ember-cli-inject-live-reload": "^1.4.0",
     "ember-cli-jshint": "^1.0.0",
+    "ember-cli-meta-tags": "3.0.4",
     "ember-cli-moment-shim": "2.2.1",
     "ember-cli-qunit": "^2.1.0",
     "ember-cli-release": "^0.2.9",
