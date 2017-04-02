@@ -9,10 +9,7 @@
 <div class="row">
   <h1 class="col-xs-12 text-align-sm">{{model.fullName}}</h1>
   <div class="col-xs-12 col-sm-5 col-sm-push-7 mb-1">
-    {{lazy-image
-      url=(if model.photo model.photo '/assets/images/default-image.png')
-      alt=(concat 'Photo for ' model.fullName)
-    }}
+    <img src="{{if model.photo model.photo '/assets/images/default-image.png'}}" alt={{concat 'Photo for ' model.fullName}} />
   </div>
   <div class="col-xs-12 col-sm-7 col-sm-pull-5">
     <ul class="list-group">

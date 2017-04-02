@@ -2,11 +2,11 @@
   {{link-to 'Edit' 'person.edit' person.id classNames='text-center edit-link'}}
 {{/if}}
 
-{{#link-to 'person' person tagName='div' classNames='card-img-top'}}
+{{#link-to 'person' person classNames='card-img-top'}}
   <img src="{{if person.photo person.photo '/assets/images/default-image.png'}}" alt="{{concat 'Photo for ' person.fullName}}"/>
 {{/link-to}}
 
-{{#link-to 'person.index' person tagName='div' classNames='card-block'}}
+{{#link-to 'person.index' person classNames='card-block'}}
   <h4 class="card-title">
     {{#highlight-filter
       fieldName='fullName'
